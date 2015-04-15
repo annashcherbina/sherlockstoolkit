@@ -1,0 +1,46 @@
+<h1>Person Values</h1>
+
+<table class="display dataTable" cellspacing="0" width="100%">
+
+    <thead>
+    <tr>
+        <th>Person</th>
+        <th>Attribute</th>
+        <th>Choice</th>
+        <th>Attribute type</th>
+        <th>Attribute int</th>
+        <th>Attribute float</th>
+        <th>Attribute string</th>
+        <th>Attribute bool</th>
+        <th>Source</th>
+        <th>Is truth</th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @person_values.each do |person_value| %>
+        <tr>
+            <td><%= person_value.person_id %></td>
+            <td><%= person_value.attribute_id %></td>
+            <td><%= person_value.choice_id %></td>
+            <td><%= person_value.attribute_type %></td>
+            <td><%= person_value.attribute_int %></td>
+            <td><%= person_value.attribute_float %></td>
+            <td><%= person_value.attribute_string %></td>
+            <td><%= person_value.attribute_bool %></td>
+            <td><%= person_value.source %></td>
+            <td><%= person_value.is_truth %></td>
+            <td><%= link_to 'Show', person_value %></td>
+            <td><%= link_to 'Edit', edit_person_value_path(person_value) %></td>
+            <td><%= link_to 'Destroy', person_value, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+        </tr>
+    <% end %>
+    </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Person value', new_person_value_path %>

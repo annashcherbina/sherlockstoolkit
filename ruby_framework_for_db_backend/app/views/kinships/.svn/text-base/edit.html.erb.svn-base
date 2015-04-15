@@ -1,0 +1,6 @@
+<h1>Editing kinship</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Show', @kinship %> |
+<%= link_to 'Back', kinships_path %>

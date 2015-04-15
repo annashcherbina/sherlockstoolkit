@@ -1,0 +1,34 @@
+<h1>Frequencies</h1>
+
+<table class="display dataTable" cellspacing="0" width="100%">
+
+    <thead>
+    <tr>
+        <th>Locus</th>
+        <th>Geographic</th>
+        <th>Allele frequency</th>
+        <th>Source</th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @frequencies.each do |frequency| %>
+        <tr>
+            <td><%= frequency.locus_id %></td>
+            <td><%= frequency.geographic_id %></td>
+            <td><%= frequency.allele_frequency %></td>
+            <td><%= frequency.source %></td>
+            <td><%= link_to 'Show', frequency %></td>
+            <td><%= link_to 'Edit', edit_frequency_path(frequency) %></td>
+            <td><%= link_to 'Destroy', frequency, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+        </tr>
+    <% end %>
+    </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Frequency', new_frequency_path %>

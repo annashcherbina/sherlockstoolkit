@@ -1,0 +1,245 @@
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/repos/forensics/!svn/ver/710/Forensics/intern_projects/nelson_chiu/Forensics/db/migrate
+END
+20131217203602_create_comparisons.rb
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/repos/forensics/!svn/ver/213/Forensics/intern_projects/nelson_chiu/Forensics/db/migrate/20131217203602_create_comparisons.rb
+END
+20140309145044_create_loci.rb
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/repos/forensics/!svn/ver/388/Forensics/intern_projects/nelson_chiu/Forensics/db/migrate/20140309145044_create_loci.rb
+END
+20140313190406_create_person_samples.rb
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/repos/forensics/!svn/ver/229/Forensics/intern_projects/nelson_chiu/Forensics/db/migrate/20140313190406_create_person_samples.rb
+END
+20131217203554_create_families.rb
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/repos/forensics/!svn/ver/85/Forensics/intern_projects/nelson_chiu/Forensics/db/migrate/20131217203554_create_families.rb
+END
+20131217203625_create_locus_attributes.rb
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/repos/forensics/!svn/ver/85/Forensics/intern_projects/nelson_chiu/Forensics/db/migrate/20131217203625_create_locus_attributes.rb
+END
+20131217203556_create_instruments.rb
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/repos/forensics/!svn/ver/85/Forensics/intern_projects/nelson_chiu/Forensics/db/migrate/20131217203556_create_instruments.rb
+END
+20140725142829_create_loci_groups.rb
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/repos/forensics/!svn/ver/655/Forensics/intern_projects/nelson_chiu/Forensics/db/migrate/20140725142829_create_loci_groups.rb
+END
+20140806164157_create_kinship_training_modules.rb
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svn/repos/forensics/!svn/ver/710/Forensics/intern_projects/nelson_chiu/Forensics/db/migrate/20140806164157_create_kinship_training_modules.rb
+END
+20131217203615_create_images.rb
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/repos/forensics/!svn/ver/663/Forensics/intern_projects/nelson_chiu/Forensics/db/migrate/20131217203615_create_images.rb
+END
+20131217203550_create_choices.rb
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/repos/forensics/!svn/ver/85/Forensics/intern_projects/nelson_chiu/Forensics/db/migrate/20131217203550_create_choices.rb
+END
+20140219145739_create_ancestries.rb
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/repos/forensics/!svn/ver/557/Forensics/intern_projects/nelson_chiu/Forensics/db/migrate/20140219145739_create_ancestries.rb
+END
+20131217203603_create_barcodes.rb
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/repos/forensics/!svn/ver/156/Forensics/intern_projects/nelson_chiu/Forensics/db/migrate/20131217203603_create_barcodes.rb
+END
+20140310152112_create_calls_comparisons_join.rb
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/repos/forensics/!svn/ver/534/Forensics/intern_projects/nelson_chiu/Forensics/db/migrate/20140310152112_create_calls_comparisons_join.rb
+END
+20140127145043_create_primers.rb
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/repos/forensics/!svn/ver/156/Forensics/intern_projects/nelson_chiu/Forensics/db/migrate/20140127145043_create_primers.rb
+END
+20140219145808_create_ethnicities.rb
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/repos/forensics/!svn/ver/471/Forensics/intern_projects/nelson_chiu/Forensics/db/migrate/20140219145808_create_ethnicities.rb
+END
+20140310145201_create_calls.rb
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/repos/forensics/!svn/ver/676/Forensics/intern_projects/nelson_chiu/Forensics/db/migrate/20140310145201_create_calls.rb
+END
+20131217203551_create_person_values.rb
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/repos/forensics/!svn/ver/85/Forensics/intern_projects/nelson_chiu/Forensics/db/migrate/20131217203551_create_person_values.rb
+END
+20131217203617_create_panels.rb
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/repos/forensics/!svn/ver/226/Forensics/intern_projects/nelson_chiu/Forensics/db/migrate/20131217203617_create_panels.rb
+END
+20131217203553_create_people.rb
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/repos/forensics/!svn/ver/705/Forensics/intern_projects/nelson_chiu/Forensics/db/migrate/20131217203553_create_people.rb
+END
+20140331005043_add_data.rb
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/repos/forensics/!svn/ver/676/Forensics/intern_projects/nelson_chiu/Forensics/db/migrate/20140331005043_add_data.rb
+END
+20131217203548_create_attributes.rb
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/repos/forensics/!svn/ver/85/Forensics/intern_projects/nelson_chiu/Forensics/db/migrate/20131217203548_create_attributes.rb
+END
+20140310175253_create_strs.rb
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/repos/forensics/!svn/ver/219/Forensics/intern_projects/nelson_chiu/Forensics/db/migrate/20140310175253_create_strs.rb
+END
+20140310134052_create_samples.rb
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/repos/forensics/!svn/ver/663/Forensics/intern_projects/nelson_chiu/Forensics/db/migrate/20140310134052_create_samples.rb
+END
+20131217203600_create_experiments.rb
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/repos/forensics/!svn/ver/339/Forensics/intern_projects/nelson_chiu/Forensics/db/migrate/20131217203600_create_experiments.rb
+END
+20131217203620_create_users.rb
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/repos/forensics/!svn/ver/376/Forensics/intern_projects/nelson_chiu/Forensics/db/migrate/20131217203620_create_users.rb
+END
+20131217203628_create_geographics.rb
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/repos/forensics/!svn/ver/85/Forensics/intern_projects/nelson_chiu/Forensics/db/migrate/20131217203628_create_geographics.rb
+END
+20131217203622_create_parameters.rb
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/repos/forensics/!svn/ver/663/Forensics/intern_projects/nelson_chiu/Forensics/db/migrate/20131217203622_create_parameters.rb
+END
+20131217203618_create_folders.rb
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/repos/forensics/!svn/ver/156/Forensics/intern_projects/nelson_chiu/Forensics/db/migrate/20131217203618_create_folders.rb
+END
+20131217203609_create_allele_references.rb
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/repos/forensics/!svn/ver/156/Forensics/intern_projects/nelson_chiu/Forensics/db/migrate/20131217203609_create_allele_references.rb
+END
+20131217203621_create_attachments.rb
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/repos/forensics/!svn/ver/663/Forensics/intern_projects/nelson_chiu/Forensics/db/migrate/20131217203621_create_attachments.rb
+END
+20131217203626_create_frequencies.rb
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/repos/forensics/!svn/ver/156/Forensics/intern_projects/nelson_chiu/Forensics/db/migrate/20131217203626_create_frequencies.rb
+END
+20131217203614_create_points.rb
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/repos/forensics/!svn/ver/156/Forensics/intern_projects/nelson_chiu/Forensics/db/migrate/20131217203614_create_points.rb
+END
+20140505171114_create_attachments_parameters_join.rb
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/svn/repos/forensics/!svn/ver/534/Forensics/intern_projects/nelson_chiu/Forensics/db/migrate/20140505171114_create_attachments_parameters_join.rb
+END
+20131217203611_create_relationships.rb
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/repos/forensics/!svn/ver/546/Forensics/intern_projects/nelson_chiu/Forensics/db/migrate/20131217203611_create_relationships.rb
+END
+20140310172721_create_snps.rb
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/repos/forensics/!svn/ver/666/Forensics/intern_projects/nelson_chiu/Forensics/db/migrate/20140310172721_create_snps.rb
+END
+20140725141531_create_loci_to_loci_group_map_table.rb
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/svn/repos/forensics/!svn/ver/655/Forensics/intern_projects/nelson_chiu/Forensics/db/migrate/20140725141531_create_loci_to_loci_group_map_table.rb
+END
+20131217203606_create_alleles.rb
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/repos/forensics/!svn/ver/156/Forensics/intern_projects/nelson_chiu/Forensics/db/migrate/20131217203606_create_alleles.rb
+END
+20140310170222_create_experimenters.rb
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/repos/forensics/!svn/ver/217/Forensics/intern_projects/nelson_chiu/Forensics/db/migrate/20140310170222_create_experimenters.rb
+END
+20140310131010_create_panel_loci.rb
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/repos/forensics/!svn/ver/664/Forensics/intern_projects/nelson_chiu/Forensics/db/migrate/20140310131010_create_panel_loci.rb
+END
+20131217203612_create_kinships.rb
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/repos/forensics/!svn/ver/85/Forensics/intern_projects/nelson_chiu/Forensics/db/migrate/20131217203612_create_kinships.rb
+END

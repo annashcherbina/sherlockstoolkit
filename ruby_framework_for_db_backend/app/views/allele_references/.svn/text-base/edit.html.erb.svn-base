@@ -1,0 +1,6 @@
+<h1>Editing allele_reference</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Show', @allele_reference %> |
+<%= link_to 'Back', allele_references_path %>

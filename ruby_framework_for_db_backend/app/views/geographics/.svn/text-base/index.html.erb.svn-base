@@ -1,0 +1,28 @@
+<h1>Geographics</h1>
+
+<table class="display dataTable" cellspacing="0" width="100%">
+
+    <thead>
+    <tr>
+        <th>Region name</th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @geographics.each do |geographic| %>
+        <tr>
+            <td><%= geographic.region_name %></td>
+            <td><%= link_to 'Show', geographic %></td>
+            <td><%= link_to 'Edit', edit_geographic_path(geographic) %></td>
+            <td><%= link_to 'Destroy', geographic, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+        </tr>
+    <% end %>
+    </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Geographic', new_geographic_path %>

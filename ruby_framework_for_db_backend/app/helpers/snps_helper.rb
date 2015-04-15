@@ -1,0 +1,2 @@
+module SNPsHelper
+end

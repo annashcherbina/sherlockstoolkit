@@ -1,0 +1,41 @@
+<h1>Experimenters</h1>
+
+<table class="display dataTable" cellspacing="0" width="100%">
+
+
+  <thead>
+    <tr>
+      <th>Experiment</th>
+      <th>Person</th>
+      <th>Role</th>
+      <th>Empcr</th>
+      <th>Uncertain empcr</th>
+      <th>Seq</th>
+      <th>Uncertain seq</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @experimenters.each do |experimenter| %>
+      <tr>
+        <td><%= experimenter.experiment %></td>
+        <td><%= experimenter.person %></td>
+        <td><%= experimenter.role %></td>
+        <td><%= experimenter.empcr %></td>
+        <td><%= experimenter.uncertain_empcr %></td>
+        <td><%= experimenter.seq %></td>
+        <td><%= experimenter.uncertain_seq %></td>
+        <td><%= link_to 'Show', experimenter %></td>
+        <td><%= link_to 'Edit', edit_experimenter_path(experimenter) %></td>
+        <td><%= link_to 'Destroy', experimenter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Experimenter', new_experimenter_path %>

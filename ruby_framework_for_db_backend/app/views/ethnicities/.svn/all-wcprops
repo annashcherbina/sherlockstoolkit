@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/repos/forensics/!svn/ver/513/Forensics/intern_projects/nelson_chiu/Forensics/app/views/ethnicities
+END
+edit.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/repos/forensics/!svn/ver/156/Forensics/intern_projects/nelson_chiu/Forensics/app/views/ethnicities/edit.html.erb
+END
+index.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/repos/forensics/!svn/ver/513/Forensics/intern_projects/nelson_chiu/Forensics/app/views/ethnicities/index.html.erb
+END
+new.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/repos/forensics/!svn/ver/156/Forensics/intern_projects/nelson_chiu/Forensics/app/views/ethnicities/new.html.erb
+END
+show.json.jbuilder
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/repos/forensics/!svn/ver/156/Forensics/intern_projects/nelson_chiu/Forensics/app/views/ethnicities/show.json.jbuilder
+END
+show.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/repos/forensics/!svn/ver/161/Forensics/intern_projects/nelson_chiu/Forensics/app/views/ethnicities/show.html.erb
+END
+_form.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/repos/forensics/!svn/ver/161/Forensics/intern_projects/nelson_chiu/Forensics/app/views/ethnicities/_form.html.erb
+END
+index.json.jbuilder
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/repos/forensics/!svn/ver/156/Forensics/intern_projects/nelson_chiu/Forensics/app/views/ethnicities/index.json.jbuilder
+END

@@ -1,0 +1,20 @@
+<%= render(partial: 'layouts/error_messages', locals: {object: @locus_attribute}) %>
+
+<%= form_for(@locus_attribute) do |f| %>
+
+    <div class="field">
+        <%= f.label :locus_id %><br>
+        <%= f.number_field :locus_id %>
+    </div>
+    <div class="field">
+        <%= f.label :attribute_name %><br>
+        <%= f.text_field :attribute_name %>
+    </div>
+    <div class="field">
+        <%= f.label :attribute_choice %><br>
+        <%= f.text_field :attribute_choice %>
+    </div>
+    <div class="actions">
+        <%= f.submit %>
+    </div>
+<% end %>

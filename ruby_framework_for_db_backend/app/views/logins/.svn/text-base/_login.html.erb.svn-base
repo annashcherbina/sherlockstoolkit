@@ -1,0 +1,17 @@
+<%= form_tag({:action => 'verify'}, {:method => "post"}) %>
+    <table>
+        <thead></thead>
+        <tbody>
+        <tr>
+            <td><label>username:</label></td>
+            <td><input type="text_field" name="username" maxlength="12" size="20" style="width:200px"></td>
+        </tr>
+        <tr>
+            <td><label for="user_password">Password:</label></td>
+            <td><%= password_field_tag :password, params[:password], :size => 20, :style => "width:200px" %></td>
+        </tr>
+        </tbody>
+        </tbody>
+        <br/>
+    </table>
+<%= submit_tag "Login" %>

@@ -1,0 +1,1 @@
+json.extract! @person_value, :id, :person_id, :attribute_id, :choice_id, :attribute_type, :attribute_int, :attribute_float, :attribute_string, :attribute_bool, :source, :is_truth, :created_at, :updated_at

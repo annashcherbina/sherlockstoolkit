@@ -1,0 +1,34 @@
+<h1>Allele References</h1>
+
+<table class="display dataTable" cellspacing="0" width="100%">
+
+    <thead>
+    <tr>
+        <th>Locus</th>
+        <th>Allele name</th>
+        <th>Allele sequence</th>
+        <th>Regular expression</th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @allele_references.each do |allele_reference| %>
+        <tr>
+            <td><%= allele_reference.locus_id %></td>
+            <td><%= allele_reference.allele_name %></td>
+            <td><%= allele_reference.allele_sequence %></td>
+            <td><%= allele_reference.regular_expression %></td>
+            <td><%= link_to 'Show', allele_reference %></td>
+            <td><%= link_to 'Edit', edit_allele_reference_path(allele_reference) %></td>
+            <td><%= link_to 'Destroy', allele_reference, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+        </tr>
+    <% end %>
+    </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Allele reference', new_allele_reference_path %>

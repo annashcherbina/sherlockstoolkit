@@ -1,0 +1,18 @@
+<%= render(partial: 'layouts/error_messages', locals: {object: @folder}) %>
+
+<%= form_for(@folder) do |f| %>
+    <div class="field">
+        <%= f.label :name %><br>
+        <%= f.text_field :name %>
+    </div>
+    <div class="field">
+        <%= f.label :description %><br>
+        <%= f.text_field :description %>
+    </div>
+
+    <%= f.hidden_field(:parent_id, value: params[:parent_folder_id]) %>
+
+    <div class="actions">
+        <%= f.submit %>
+    </div>
+<% end %>

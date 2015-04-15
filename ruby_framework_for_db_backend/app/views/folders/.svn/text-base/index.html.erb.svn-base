@@ -1,0 +1,23 @@
+<h1>Top Level Folders</h1>
+
+<table class="display dataTable" cellspacing="0" width="100%">
+
+    <thead>
+    <tr>
+        <th>Folder Name</th>
+        <th>Owner</th>
+        <th>Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @folders.each do |folder| %>
+        <tr>
+            <td><%= link_to(folder.name, folder) %></td>
+            <td><%= folder.user_id ? folder.user.name : 'System' %></td>
+            <td><%= folder.description %></td>
+        </tr>
+    <% end %>
+    </tbody>
+</table>
+

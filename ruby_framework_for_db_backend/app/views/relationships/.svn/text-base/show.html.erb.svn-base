@@ -1,0 +1,22 @@
+<p>
+    <strong>Family:</strong>
+    <%= @relationship.family_id %>
+</p>
+
+<p>
+    <strong>Person:</strong>
+    <%= @relationship.person_id %>
+</p>
+
+<p>
+    <strong>Person2:</strong>
+    <%= @relationship.person2_id %>
+</p>
+
+<p>
+    <strong>Relation:</strong>
+    <%= @relationship.relation %>
+</p>
+
+<%= link_to 'Edit', edit_relationship_path(@relationship) %> |
+<%= link_to 'Back', relationships_path %>

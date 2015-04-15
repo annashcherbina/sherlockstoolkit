@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+    <strong>Person:</strong>
+    <%= @ancestry.person %>
+</p>
+
+<p>
+    <strong>Ethnicity:</strong>
+    <%= @ancestry.ethnicity %>
+</p>
+
+<p>
+    <strong>Percent:</strong>
+    <%= @ancestry.percent %>
+</p>
+
+<%= link_to 'Edit', edit_ancestry_path(@ancestry) %> |
+<%= link_to 'Back', ancestries_path %>

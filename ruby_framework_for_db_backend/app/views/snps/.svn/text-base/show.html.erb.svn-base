@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Experiment:</strong>
+  <%= @snp.experiment %>
+</p>
+
+<p>
+  <strong>Primer:</strong>
+  <%= @snp.primer %>
+</p>
+
+<p>
+  <strong>Locus:</strong>
+  <%= @snp.locus %>
+</p>
+
+<p>
+  <strong>Sample:</strong>
+  <%= @snp.sample %>
+</p>
+
+<p>
+  <strong>Allele base:</strong>
+  <%= @snp.allele_base %>
+</p>
+
+<p>
+  <strong>Count:</strong>
+  <%= @snp.count %>
+</p>
+
+<p>
+  <strong>Forward qual:</strong>
+  <%= @snp.forward_qual %>
+</p>
+
+<p>
+  <strong>Reverse qual:</strong>
+  <%= @snp.reverse_qual %>
+</p>
+
+<p>
+  <strong>Is minor:</strong>
+  <%= @snp.is_minor %>
+</p>
+
+<p>
+  <strong>Flank5:</strong>
+  <%= @snp.flank5 %>
+</p>
+
+<p>
+  <strong>Flank3:</strong>
+  <%= @snp.flank3 %>
+</p>
+
+<%= link_to 'Edit', edit_snp_path(@snp) %> |
+<%= link_to 'Back', snps_path %>

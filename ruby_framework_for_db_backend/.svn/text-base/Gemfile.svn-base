@@ -1,0 +1,74 @@
+source 'https://rubygems.org'
+
+# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'rails', '~> 4.0.0'
+
+# Use mysql2 as the database for Active Record
+gem 'sqlite3'
+gem 'mysql2'
+
+#webserver
+gem 'thin'
+
+#spreadsheet parser
+gem 'spreadsheet'
+
+#use gem install nokogiri -- use-system-libraries
+# if the bundle update fails
+gem 'roo', '~> 1.13.2'
+
+# mass insertion of data gem
+gem 'activerecord-import'
+
+#local time
+gem 'local_time'
+
+#high chart for rails
+gem 'lazy_high_charts'
+
+# Use SCSS for stylesheets
+gem 'sass-rails', '~> 4.0.0'
+
+# Use Uglifier as compressor for JavaScript assets
+gem 'uglifier', '>= 1.3.0'
+
+# Use CoffeeScript for .js.coffee assets and views
+gem 'coffee-rails', '~> 4.0.0'
+
+#use the d3 graphing module and the topojson maps
+gem 'd3-rails', '~> 3.4.4'
+gem 'topojson-rails'
+
+# See https://github.com/sstephenson/execjs#readme for more supported runtimes
+# gem 'therubyracer', platforms: :ruby
+
+# Use jquery as the JavaScript library
+gem 'jquery-rails'
+# jquery ui
+gem 'jquery-ui-rails', '~> 5.0.0'
+#jquery ui autocomplete gem
+gem 'rails3-jquery-autocomplete'
+#datatables gem
+gem 'jquery-datatables-rails', '~> 2.2.1'
+#access rails object with javascript json
+gem 'gon', '~> 5.0.4'
+
+# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+gem 'jbuilder', '~> 1.2'
+
+group :doc do
+  # bundle exec rake doc:rails generates the API under doc/api.
+  gem 'sdoc', require: false
+end
+
+# Use ActiveModel has_secure_password
+# gem 'bcrypt-ruby', '~> 3.1.2'
+
+# Use unicorn as the app server
+# gem 'unicorn'
+
+# Use Capistrano for deployment
+# gem 'capistrano', group: :development
+
+# Use debugger
+# gem 'debugger', group: [:development, :test]

@@ -1,0 +1,6 @@
+<h1>Editing loci_group</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Show', @loci_group %> |
+<%= link_to 'Back', loci_groups_path %>

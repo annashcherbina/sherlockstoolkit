@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+    <title>Forensics System</title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+
+</head>
+<body>
+<div id="page">
+    <div id="content">
+        <div class="boxed">
+            <% if flash[:notice] -%>
+                <h1 align="center"><p style="color: red;"><%= flash[:notice] %></p></h1>
+            <% end -%>
+            <h2 class="title1">User Login</h2>
+
+            <p>Please login with your login name and password.</p>
+            <%= form_tag({:action => 'verify'}, {:method => "post"}) %>
+            <table>
+                <tbody>
+                <tr>
+                    <td><label>Lincoln Laboratory ID:</label></td>
+                    <td><input type="text_field" name="username" maxlength="20" size="20" style="width:200px"/></td>
+                </tr>
+                <tr>
+                    <td><label for="user_password">Password:</label></td>
+                    <td><%= password_field_tag :password, params[:password], :size => 20, :style => "width:200px" %></td>
+                </tr>
+                </tbody>
+            </table>
+            <p><%= submit_tag "Login" %></p>
+        </div>
+    </div>
+    <div style="clear: both;">&nbsp;</div>
+</div>
+</body>
+</html>

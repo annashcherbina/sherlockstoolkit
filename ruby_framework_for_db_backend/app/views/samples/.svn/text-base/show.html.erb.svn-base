@@ -1,0 +1,37 @@
+<p>
+  <strong>Experiment:</strong>
+  <%= link_to(@sample.experiment.name, experiment_path(@sample.experiment.id)) %>
+</p>
+
+<p>
+  <strong>Barcode:</strong>
+  <%= @sample.barcode.name %>
+</p>
+
+<p>
+    <strong>Persons In Sample</strong>
+    <ul>
+        <% @sample.person_samples.each do |person_sample| %>
+            <li><%= person_sample.molarity ?
+                            "#{person_sample.person.id_code} at molarity: #{person_sample.molarity}"
+                    : person_sample.person.id_code %></li>
+        <% end %>
+    </ul>
+</p>
+
+<p>
+  <strong>Is good:</strong>
+  <%= @sample.is_good %>
+</p>
+
+<p>
+  <strong>Is mixture:</strong>
+  <%= @sample.is_mixture %>
+</p>
+
+<p>
+  <strong>Minor alleles called:</strong>
+  <%= @sample.minor_alleles_called %>
+</p>
+
+<%= link_to 'Back', samples_path %>

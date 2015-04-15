@@ -1,0 +1,8 @@
+K 10
+svn:ignore
+V 31
+development.sqlite3
+
+*.sqlite3
+
+END

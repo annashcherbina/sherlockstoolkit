@@ -1,0 +1,28 @@
+<h1>Experiments</h1>
+
+<table class="display dataTable" cellspacing="0" width="100%">
+    <thead>
+    <tr>
+        <th>Instrument</th>
+        <th>Hash</th>
+        <th>Name</th>
+        <th>Panel Name</th>
+        <th>Is mixture</th>
+        <th>Run Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @experiments.each do |experiment| %>
+        <% unless experiment.samples.empty? %>
+            <tr>
+                <td><%= @instruments_hash[experiment.instrument_id].name if experiment.instrument_id %></td>
+                <td><%= experiment.hash_name %></td>
+                <td><%= link_to experiment.name, experiment %></td>
+                <td><%= @panels_hash[experiment.primer_panel_id].description if @panels_hash[experiment.primer_panel_id] %></td>
+                <td><%= experiment.is_mixture ? 'Yes' : 'No' %></td>
+                <td><%= simple_format(word_wrap(local_time(experiment.run_date, format: "%Y-%m-%d"))) if experiment.run_date %></td>
+            </tr>
+        <% end %>
+    <% end %>
+    </tbody>
+</table>

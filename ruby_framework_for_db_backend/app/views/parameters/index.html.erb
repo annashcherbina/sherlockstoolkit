@@ -1,0 +1,40 @@
+<h1>Parameters</h1>
+
+<table class="display dataTable parameterTable" cellspacing="0" width="100%">
+
+    <thead>
+    <tr>
+        <th>User</th>
+        <th>Group</th>
+        <th>Category</th>
+        <th>Name</th>
+        <th>Value</th>
+    </tr>
+    </thead>
+
+    <tfoot>
+    <tr>
+        <th class="filter">User</th>
+        <th class="filter">Group</th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+    </tfoot>
+
+    <tbody>
+    <% @parameters_array.each do |parameter| %>
+        <tr>
+            <td><%= parameter.user_id ? @users_hash[parameter.user_id].name : '' %></td>
+            <td><%= parameter.group_name %></td>
+            <td><%= parameter.category %></td>
+            <td><%= parameter.name %></td>
+            <td><%= parameter.value % 1 == 0 ? parameter.value.to_i : parameter.value %></td>
+        </tr>
+    <% end %>
+    </tbody>
+</table>
+
+<% content_for :javascripts do %>
+    <% javascript_include_tag 'parameters_index' %>
+<% end %>

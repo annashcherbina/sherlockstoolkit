@@ -1,0 +1,53 @@
+<%= render(partial: 'layouts/error_messages', locals: {object: @snp}) %>
+
+
+<%= form_for(@snp) do |f| %>
+
+  <div class="field">
+    <%= f.label :experiment_id %><br>
+    <%= f.text_field :experiment_id %>
+  </div>
+  <div class="field">
+    <%= f.label :primer_id %><br>
+    <%= f.text_field :primer_id %>
+  </div>
+  <div class="field">
+    <%= f.label :locus_id %><br>
+    <%= f.text_field :locus_id %>
+  </div>
+  <div class="field">
+    <%= f.label :sample_id %><br>
+    <%= f.text_field :sample_id %>
+  </div>
+  <div class="field">
+    <%= f.label :allele_base %><br>
+    <%= f.text_field :allele_base %>
+  </div>
+  <div class="field">
+    <%= f.label :count %><br>
+    <%= f.number_field :count %>
+  </div>
+  <div class="field">
+    <%= f.label :forward_qual %><br>
+    <%= f.text_field :forward_qual %>
+  </div>
+  <div class="field">
+    <%= f.label :reverse_qual %><br>
+    <%= f.text_field :reverse_qual %>
+  </div>
+  <div class="field">
+    <%= f.label :is_minor %><br>
+    <%= f.check_box :is_minor %>
+  </div>
+  <div class="field">
+    <%= f.label :flank5 %><br>
+    <%= f.text_field :flank5 %>
+  </div>
+  <div class="field">
+    <%= f.label :flank3 %><br>
+    <%= f.text_field :flank3 %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

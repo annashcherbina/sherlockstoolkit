@@ -1,0 +1,14 @@
+<%= render(partial: 'layouts/error_messages', locals: {object: @experiment}) %>
+
+<%= form_for(@experiment, :html => {:multipart => true}) do |f| %>
+
+    <div class="field">
+        <%= f.label :notes %><br>
+        <%= f.text_area :notes, size: '50x20' %>
+    </div>
+
+    <br/>
+    <div class="actions">
+        <%= f.submit %>
+    </div>
+<% end %>

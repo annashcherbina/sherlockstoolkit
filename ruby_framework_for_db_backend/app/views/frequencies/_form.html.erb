@@ -1,0 +1,24 @@
+<%= render(partial: 'layouts/error_messages', locals: {object: @frequency}) %>
+
+<%= form_for(@frequency) do |f| %>
+
+    <div class="field">
+        <%= f.label :locus_id %><br>
+        <%= f.number_field :locus_id %>
+    </div>
+    <div class="field">
+        <%= f.label :geographic_id %><br>
+        <%= f.number_field :geographic_id %>
+    </div>
+    <div class="field">
+        <%= f.label :allele_frequency %><br>
+        <%= f.text_field :allele_frequency %>
+    </div>
+    <div class="field">
+        <%= f.label :source %><br>
+        <%= f.text_field :source %>
+    </div>
+    <div class="actions">
+        <%= f.submit %>
+    </div>
+<% end %>

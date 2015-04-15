@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Experiment:</strong>
+  <%= @str.experiment %>
+</p>
+
+<p>
+  <strong>Primer:</strong>
+  <%= @str.primer %>
+</p>
+
+<p>
+  <strong>Locus:</strong>
+  <%= @str.locus %>
+</p>
+
+<p>
+  <strong>Sample:</strong>
+  <%= @str.sample %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @str.name %>
+</p>
+
+<p>
+  <strong>Is stutter:</strong>
+  <%= @str.is_stutter %>
+</p>
+
+<p>
+  <strong>Is novel allele:</strong>
+  <%= @str.is_novel_allele %>
+</p>
+
+<p>
+  <strong>Is novel flank:</strong>
+  <%= @str.is_novel_flank %>
+</p>
+
+<p>
+  <strong>Novel flank name:</strong>
+  <%= @str.novel_flank_name %>
+</p>
+
+<p>
+  <strong>Flank5:</strong>
+  <%= @str.flank5 %>
+</p>
+
+<p>
+  <strong>Flank3:</strong>
+  <%= @str.flank3 %>
+</p>
+
+<p>
+  <strong>STR call:</strong>
+  <%= @str.str_call %>
+</p>
+
+<%= link_to 'Edit', edit_str_path(@str) %> |
+<%= link_to 'Back', strs_path %>

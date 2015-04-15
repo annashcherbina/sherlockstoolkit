@@ -1,0 +1,30 @@
+<%= form_for(@loci_group, :html => {:multipart => true}) do |f| %>
+    <% if @loci_group.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= pluralize(@loci_group.errors.count, "error") %> prohibited this loci_group from being saved:</h2>
+
+            <ul>
+                <% @loci_group.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+    <% if @loci_group.new_record? %>
+        <div class="field">
+            <%= f.label :uploaded_file, 'Upload your file.' %><br />
+            <%= f.file_field :uploaded_file, accept: 'text/plain' %>
+        </div>
+    <% end %>
+
+    <div class="field">
+        <%= f.label :name %><br>
+        <%= f.text_field :name %>
+    </div>
+
+
+    <div class="actions">
+        <%= f.submit %>
+    </div>
+<% end %>

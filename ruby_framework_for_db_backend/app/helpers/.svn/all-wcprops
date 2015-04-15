@@ -1,0 +1,287 @@
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/repos/forensics/!svn/ver/694/Forensics/intern_projects/nelson_chiu/Forensics/app/helpers
+END
+primers_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/repos/forensics/!svn/ver/89/Forensics/intern_projects/nelson_chiu/Forensics/app/helpers/primers_helper.rb
+END
+snps_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/repos/forensics/!svn/ver/218/Forensics/intern_projects/nelson_chiu/Forensics/app/helpers/snps_helper.rb
+END
+relationships_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/repos/forensics/!svn/ver/85/Forensics/intern_projects/nelson_chiu/Forensics/app/helpers/relationships_helper.rb
+END
+people_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/repos/forensics/!svn/ver/85/Forensics/intern_projects/nelson_chiu/Forensics/app/helpers/people_helper.rb
+END
+person_values_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/repos/forensics/!svn/ver/85/Forensics/intern_projects/nelson_chiu/Forensics/app/helpers/person_values_helper.rb
+END
+loci_groups_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/repos/forensics/!svn/ver/655/Forensics/intern_projects/nelson_chiu/Forensics/app/helpers/loci_groups_helper.rb
+END
+experimenters_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/repos/forensics/!svn/ver/217/Forensics/intern_projects/nelson_chiu/Forensics/app/helpers/experimenters_helper.rb
+END
+strs_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/repos/forensics/!svn/ver/219/Forensics/intern_projects/nelson_chiu/Forensics/app/helpers/strs_helper.rb
+END
+comparisons_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/repos/forensics/!svn/ver/85/Forensics/intern_projects/nelson_chiu/Forensics/app/helpers/comparisons_helper.rb
+END
+calls_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/repos/forensics/!svn/ver/211/Forensics/intern_projects/nelson_chiu/Forensics/app/helpers/calls_helper.rb
+END
+output_file.rb
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/repos/forensics/!svn/ver/161/Forensics/intern_projects/nelson_chiu/Forensics/app/helpers/output_file.rb
+END
+ancestries_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/repos/forensics/!svn/ver/156/Forensics/intern_projects/nelson_chiu/Forensics/app/helpers/ancestries_helper.rb
+END
+samples_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/repos/forensics/!svn/ver/471/Forensics/intern_projects/nelson_chiu/Forensics/app/helpers/samples_helper.rb
+END
+panel_loci_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/repos/forensics/!svn/ver/209/Forensics/intern_projects/nelson_chiu/Forensics/app/helpers/panel_loci_helper.rb
+END
+fasta_iterator.rb
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/repos/forensics/!svn/ver/161/Forensics/intern_projects/nelson_chiu/Forensics/app/helpers/fasta_iterator.rb
+END
+seq_tools.rb
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/repos/forensics/!svn/ver/163/Forensics/intern_projects/nelson_chiu/Forensics/app/helpers/seq_tools.rb
+END
+points_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/repos/forensics/!svn/ver/85/Forensics/intern_projects/nelson_chiu/Forensics/app/helpers/points_helper.rb
+END
+panels_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/repos/forensics/!svn/ver/339/Forensics/intern_projects/nelson_chiu/Forensics/app/helpers/panels_helper.rb
+END
+barcodes_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/repos/forensics/!svn/ver/85/Forensics/intern_projects/nelson_chiu/Forensics/app/helpers/barcodes_helper.rb
+END
+data_map_bubble.rb
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/repos/forensics/!svn/ver/433/Forensics/intern_projects/nelson_chiu/Forensics/app/helpers/data_map_bubble.rb
+END
+snp_occurance.rb
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/repos/forensics/!svn/ver/211/Forensics/intern_projects/nelson_chiu/Forensics/app/helpers/snp_occurance.rb
+END
+primer_loader.rb
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/repos/forensics/!svn/ver/663/Forensics/intern_projects/nelson_chiu/Forensics/app/helpers/primer_loader.rb
+END
+loci_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/repos/forensics/!svn/ver/208/Forensics/intern_projects/nelson_chiu/Forensics/app/helpers/loci_helper.rb
+END
+attributes_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/repos/forensics/!svn/ver/85/Forensics/intern_projects/nelson_chiu/Forensics/app/helpers/attributes_helper.rb
+END
+barcode_loader.rb
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/repos/forensics/!svn/ver/663/Forensics/intern_projects/nelson_chiu/Forensics/app/helpers/barcode_loader.rb
+END
+fasta_sequence.rb
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/repos/forensics/!svn/ver/161/Forensics/intern_projects/nelson_chiu/Forensics/app/helpers/fasta_sequence.rb
+END
+kinships_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/repos/forensics/!svn/ver/85/Forensics/intern_projects/nelson_chiu/Forensics/app/helpers/kinships_helper.rb
+END
+fastq_iterator.rb
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/repos/forensics/!svn/ver/161/Forensics/intern_projects/nelson_chiu/Forensics/app/helpers/fastq_iterator.rb
+END
+families_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/repos/forensics/!svn/ver/85/Forensics/intern_projects/nelson_chiu/Forensics/app/helpers/families_helper.rb
+END
+instruments_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/repos/forensics/!svn/ver/85/Forensics/intern_projects/nelson_chiu/Forensics/app/helpers/instruments_helper.rb
+END
+locus_attributes_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/repos/forensics/!svn/ver/85/Forensics/intern_projects/nelson_chiu/Forensics/app/helpers/locus_attributes_helper.rb
+END
+geographics_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/repos/forensics/!svn/ver/85/Forensics/intern_projects/nelson_chiu/Forensics/app/helpers/geographics_helper.rb
+END
+folders_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/repos/forensics/!svn/ver/246/Forensics/intern_projects/nelson_chiu/Forensics/app/helpers/folders_helper.rb
+END
+allele_references_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/repos/forensics/!svn/ver/85/Forensics/intern_projects/nelson_chiu/Forensics/app/helpers/allele_references_helper.rb
+END
+input_file.rb
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/repos/forensics/!svn/ver/161/Forensics/intern_projects/nelson_chiu/Forensics/app/helpers/input_file.rb
+END
+tools.rb
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/repos/forensics/!svn/ver/161/Forensics/intern_projects/nelson_chiu/Forensics/app/helpers/tools.rb
+END
+users_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/repos/forensics/!svn/ver/85/Forensics/intern_projects/nelson_chiu/Forensics/app/helpers/users_helper.rb
+END
+experiments_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/repos/forensics/!svn/ver/85/Forensics/intern_projects/nelson_chiu/Forensics/app/helpers/experiments_helper.rb
+END
+application_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/repos/forensics/!svn/ver/694/Forensics/intern_projects/nelson_chiu/Forensics/app/helpers/application_helper.rb
+END
+parameters_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/repos/forensics/!svn/ver/85/Forensics/intern_projects/nelson_chiu/Forensics/app/helpers/parameters_helper.rb
+END
+images_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/repos/forensics/!svn/ver/85/Forensics/intern_projects/nelson_chiu/Forensics/app/helpers/images_helper.rb
+END
+fastq_sequence.rb
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/repos/forensics/!svn/ver/161/Forensics/intern_projects/nelson_chiu/Forensics/app/helpers/fastq_sequence.rb
+END
+ethnicities_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/repos/forensics/!svn/ver/156/Forensics/intern_projects/nelson_chiu/Forensics/app/helpers/ethnicities_helper.rb
+END
+frequencies_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/repos/forensics/!svn/ver/85/Forensics/intern_projects/nelson_chiu/Forensics/app/helpers/frequencies_helper.rb
+END
+attachments_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/repos/forensics/!svn/ver/558/Forensics/intern_projects/nelson_chiu/Forensics/app/helpers/attachments_helper.rb
+END
+locus_loader.rb
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/repos/forensics/!svn/ver/664/Forensics/intern_projects/nelson_chiu/Forensics/app/helpers/locus_loader.rb
+END
+choices_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/repos/forensics/!svn/ver/85/Forensics/intern_projects/nelson_chiu/Forensics/app/helpers/choices_helper.rb
+END

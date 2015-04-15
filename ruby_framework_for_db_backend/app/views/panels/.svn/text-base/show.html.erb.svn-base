@@ -1,0 +1,21 @@
+<p>
+    <strong>Name:</strong>
+    <%= @panel.name %>
+</p>
+
+<p>
+    <strong>Description:</strong>
+    <%= @panel.description %>
+</p>
+
+<p>
+    <strong>Panel type:</strong>
+    <%= @panel.panel_type %>
+</p>
+
+<p>
+    <strong>Uploaded at:</strong>
+    <%= @panel.updated_at.strftime("%A, %b %d, %Y") %>
+</p>
+
+<%= link_to 'Back', panels_path %>

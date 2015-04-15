@@ -1,0 +1,38 @@
+<h1>Panels</h1>
+
+<table class="display dataTable" cellspacing="0" width="100%">
+
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Panel Type</th>
+        <th>Amount of Data</th>
+        <th>Updated at</th>
+        <% if session[:is_admin] %>
+        <th>Destroy</th>
+        <% end %>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @panels.each do |panel| %>
+        <tr>
+            <td><%= link_to(panel.name, download_attachment_path(panel.attachment_id)) %></td>
+            <td><%= panel.description %></td>
+            <td><%= panel.panel_type %></td>
+            <td><%= panel_data_link(panel) %></td>
+            <td><%= local_time(panel.updated_at, format: "%Y-%m-%d %H:%M") %></td>
+            <% if session[:is_admin] %>
+            <td><%= link_to 'Destroy', panel, method: :delete,
+                            data: {confirm: "Are you sure you want to delete experiment #{panel.name}?"} %></td>
+            <% end %>
+        </tr>
+    <% end %>
+    </tbody>
+</table>
+
+<% if session[:is_admin] %>
+    <br>
+    <%= link_to 'New Panel', new_panel_path %>
+<% end %>

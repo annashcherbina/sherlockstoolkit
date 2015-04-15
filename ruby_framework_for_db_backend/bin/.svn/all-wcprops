@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/repos/forensics/!svn/ver/85/Forensics/intern_projects/nelson_chiu/Forensics/bin
+END
+rake
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/repos/forensics/!svn/ver/85/Forensics/intern_projects/nelson_chiu/Forensics/bin/rake
+END
+bundle
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/repos/forensics/!svn/ver/85/Forensics/intern_projects/nelson_chiu/Forensics/bin/bundle
+END
+rails
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/repos/forensics/!svn/ver/85/Forensics/intern_projects/nelson_chiu/Forensics/bin/rails
+END

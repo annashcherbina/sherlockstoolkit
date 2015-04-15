@@ -1,0 +1,164 @@
+<h1>Experiment <%= @experiment.name %></h1>
+
+<div>
+    <table cellpadding="2" cellspacing="0" border="0" class="pretty">
+        <thead>
+        <tr>
+            <th>Instrument</th>
+            <th>Hash</th>
+            <th>Panel</th>
+            <th>Run Date</th>
+            <th>Is Mixture</th>
+            <th>Final Lib Reads</th>
+            <th>Wells with ISP</th>
+            <th>Live ISP</th>
+            <th>Filtered Polyclonal</th>
+            <th>PCR</th>
+            <th>Amp Lig Quant</th>
+            <th>emPCR Date</th>
+            <th>Template Amount Loaded</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><%= @experiment.instrument.name if @experiment.instrument %></td>
+            <td><%= @experiment.hash_name %></td>
+            <td><%= @experiment.panel.description if @experiment.panel %></td>
+            <td><%= @experiment.run_date.strftime('%B %d, %Y') if @experiment.run_date %></td>
+            <td><%= @experiment.is_mixture ? 'Yes' : 'No' %></td>
+            <td><%= number_with_delimiter(@experiment.final_lib_reads) %></td>
+            <td><%= number_with_delimiter(@experiment.wells_with_isp) %></td>
+            <td><%= number_with_delimiter(@experiment.live_isp) %></td>
+            <td><%= number_with_delimiter(@experiment.filtered_polyclonal) %></td>
+            <td><%= @experiment.pcr %></td>
+            <td><%= @experiment.amp_lig_quant %></td>
+            <td><%= @experiment.empcr_date.strftime('%B %d, %Y') if @experiment.empcr_date %></td>
+            <td><%= @experiment.template_amount_loaded %></td>
+        </tr>
+        <% unless @experiment.notes.nil? %>
+            <tr>
+                <td class="left-align" colspan="99"><%= "Notes: #{@experiment.notes}" %></td>
+            </tr>
+        <% end %>
+        </tbody>
+    </table>
+
+<%#= link_to 'Edit Notes for this Experiment', edit_experiment_path(@experiment) %>
+
+    <br>
+
+    <% unless @experiment.samples.empty? %>
+        <p><strong>Barcodes and the People on them for this Experiment</strong></p>
+        <ul>
+            <% @experiment.samples.where(quality_thresh: 0).each do |sample| %>
+                <li>
+                    <strong><%= sample.barcode.name %></strong> -
+                    <%= sample.person_samples.map { |ps| ps.molarity.nil? ? @people_hash[ps.person_id].id_code : "#{@people_hash[ps.person_id].id_code} at #{ps.molarity} molarity" }.join(', ') %>
+                </li>
+            <% end %>
+        </ul>
+        <br>
+    <% end %>
+
+</div>
+
+<% if @experiment.is_mixture %>
+
+    <div id="tabs">
+        <ul>
+            <li><a href="#tabs-1">Reference Samples</a></li>
+            <li><a href="#tabs-2">Parameters</a></li>
+        </ul>
+
+
+        <%= form_tag({action: :form_action}, id: 'form') do %>
+            <div id="tabs-1">
+                <div>
+                    <table>
+                        <tr>
+                            <td>Mixture Quality:</td>
+                            <td>
+                                <%= select_tag('Mixture Quality', options_for_select({:DEF => 0, :Q20 => 20, :Q30 => 30, :Q40 => 40}, 0)) %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Reference Sample Quality:</td>
+                            <td>
+                                <%= select_tag('Reference Quality', options_for_select({:DEF => 0, :Q20 => 20, :Q30 => 30, :Q40 => 40}, 0)) %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Locus Group</td>
+                            <td><%= select_tag('Selected Locus Group', options_for_select(Hash[LociGroup.pluck(:name, :id).unshift(['All', 0])], 0)) %></td>
+                        </tr>
+                        <tr>
+                            <td>Parameter Group Owner:</td>
+                            <td>
+                                <%= select_tag('Param Owner',
+                                               options_for_select(Hash[Parameter.uniq.pluck(:user_id).map{ |elem| [@user_hash[elem], elem] }]),
+                                               class: 'ownerSelect') %>
+                        <tr>
+                            <td>Parameter Group:</td>
+                            <td>
+                                <%= select_tag('Param Group', '', class: 'groupSelect') %></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="button" class="resetFormButton" value="Reset Form">
+                                <input type="button" class="selectBestSamplesButton" data-target="allSamples" value="Select Best Samples (Most Reads)">
+                                <%= submit_tag('Run Mixture Analysis', name: 'form_action') %>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <br>
+
+                <div id="allSamples">
+                    <% @experiment.samples.is_mixture.where(quality_thresh: 0).each do |sample| %>
+                        <b><%= "Sample Mixture with Barcode: #{sample.barcode.name}" %> </b>
+                        <table cellpadding="2" cellspacing="0" border="0" class="pretty samples_table">
+                            <thead>
+                            <tr>
+                                <th>Subject ID:</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <% sample.people.each do |person| %>
+                                <tr>
+                                    <td><strong><%= person.id_code %></strong></td>
+                                    <% person.samples.reference.total_reads_ordered.each do |person_specific_sample| %>
+                                        <%# filters out the samples specific to that person to belong in the same panel as the main experiment%>
+                                        <% if person_specific_sample.experiment && person_specific_sample.experiment.panel && person_specific_sample.experiment.panel.id == @experiment.primer_panel_id %>
+                                            <td class="sample_cell <%= "qual#{person_specific_sample.quality_thresh}" %>">
+                                                <%= check_box_tag("sample_cb[#{person_specific_sample.id.to_s}]", 'X', person_specific_sample.id == person.best_sample_id) %>
+                                                <br>
+                                                <%= "#{@experiments_hash[person_specific_sample.experiment_id].hash_name} #{person_specific_sample.barcode.name}" %>
+                                                <br>
+                                                <%= @experiments_hash[person_specific_sample.experiment_id].name %>
+                                                <br>
+                                                <%= "(#{number_with_delimiter(person_specific_sample.total_reads)})" %>
+                                            </td>
+                                        <% end %>
+                                    <% end %>
+                                </tr>
+                            <% end %>
+                            </tbody>
+                        </table>
+                        <br>
+                    <% end %>
+                </div>
+            </div>
+
+            <div id="tabs-2">
+                <%= render(partial: 'parameters/paramstab', locals: {user_hash: @user_hash, system_params: @system_params, param_categories: ['Allele Calling', 'Bad SNPs', 'Mixture']}) %>
+            </div>
+        <% end %>
+    </div>
+<% end %>
+
+<%= link_to 'Back to Index', experiments_path %>
+
+<% content_for :javascripts do %>
+    <%= javascript_include_tag('experiments_and_samples') %>
+<% end %>
+

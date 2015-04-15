@@ -1,0 +1,12 @@
+<p>
+    <strong>Category:</strong>
+    <%= @parameter.category %>
+</p>
+
+<p>
+    <strong>Value:</strong>
+    <%= @parameter.value %>
+</p>
+
+<%= link_to 'Edit', edit_parameter_path(@parameter) %> |
+<%= link_to 'Back', parameters_path %>

@@ -1,0 +1,48 @@
+<%= render(partial: 'layouts/error_messages', locals: {object: @person_value}) %>
+
+<%= form_for(@person_value) do |f| %>
+
+    <div class="field">
+        <%= f.label :person_id %><br>
+        <%= f.number_field :person_id %>
+    </div>
+    <div class="field">
+        <%= f.label :attribute_id %><br>
+        <%= f.number_field :attribute_id %>
+    </div>
+    <div class="field">
+        <%= f.label :choice_id %><br>
+        <%= f.number_field :choice_id %>
+    </div>
+    <div class="field">
+        <%= f.label :attribute_type %><br>
+        <%= f.text_field :attribute_type %>
+    </div>
+    <div class="field">
+        <%= f.label :attribute_int %><br>
+        <%= f.number_field :attribute_int %>
+    </div>
+    <div class="field">
+        <%= f.label :attribute_float %><br>
+        <%= f.text_field :attribute_float %>
+    </div>
+    <div class="field">
+        <%= f.label :attribute_string %><br>
+        <%= f.text_field :attribute_string %>
+    </div>
+    <div class="field">
+        <%= f.label :attribute_bool %><br>
+        <%= f.check_box :attribute_bool %>
+    </div>
+    <div class="field">
+        <%= f.label :source %><br>
+        <%= f.text_field :source %>
+    </div>
+    <div class="field">
+        <%= f.label :is_truth %><br>
+        <%= f.check_box :is_truth %>
+    </div>
+    <div class="actions">
+        <%= f.submit %>
+    </div>
+<% end %>

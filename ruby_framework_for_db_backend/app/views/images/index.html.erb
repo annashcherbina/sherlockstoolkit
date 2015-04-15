@@ -1,0 +1,33 @@
+<h1>Images<%= " for folder: #{@folder.name}" if params[:folder_id] && Folder.exists?(params[:folder_id]) %></h1>
+
+<table class="display dataTable" cellspacing="0" width="100%">
+
+    <thead>
+    <tr>
+        <th>User</th>
+        <th>Folder</th>
+        <th>Description</th>
+        <th>Image type</th>
+        <th>Created at</th>
+        <th>Picture</th>
+        <th>Download</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @images.each do |image| %>
+        <tr>
+            <td><%= @users_hash[image.user_id].name %></td>
+            <td><%= link_to(@folders_hash[image.folder_id].name, folder_path(image.folder_id)) if image.folder_id %></td>
+            <td class="swap">
+                <%= content_tag :div,
+                                image.description.gsub("\n", '<br>').html_safe,
+                                {data: {textorig: image.description.gsub("\n", '<br>')}} if image.description %></td>
+            <td><%= image.image_type %></td>
+            <td><%= local_time(image.created_at, format: "%Y-%m-%d %H:%M") %></td>
+            <td><%= link_to(image_tag(show_img_image_path(image.id), ISMAP: 'false', border: '0', size: '160x80', alt: image.file_name), image_path(image.id)) %></td>
+            <td><%= link_to('Download', download_image_path(image.id)) %></td>
+        </tr>
+    <% end %>
+    </tbody>
+</table>

@@ -1,0 +1,43 @@
+<ul>
+    <li>
+        <input type="button" class="resetFormButton" value="Reset Form">
+    </li>
+    <li>
+        Owner:
+        <%= select_tag('Param Owner',
+                       options_for_select(Hash[Parameter.uniq.pluck(:user_id).map{ |elem| [user_hash[elem], elem] }]),
+                       class: 'ownerSelect') %>
+        Group:
+        <%= select_tag('Param Group', '', class: 'groupSelect') %>
+    </li>
+    <li>
+        Optional:
+        <%= text_field_tag('New Group Name', nil, {placeholder: 'Group Name (max: 40 characters)', size:45, maxlength: 40, class:'groupEntry'} ) %>
+    </li>
+    <li>
+        <%= submit_tag('Update/Create Parameter Group', name: 'form_action', data: { disable_with: 'Please wait...' }) %>
+    </li>
+</ul>
+
+<table cellpadding="2" cellspacing="0" border="0" class="pretty">
+    <tbody>
+    <% param_categories.each do |param_category| %>
+        <tr><td><h3><%= param_category %></h3></td>
+            <td><h4>Current Value</h4></td>
+            <td><h4>New Value</h4></td>
+        </tr>
+
+        <% system_params.where(category: param_category).each do |parameter| %>
+            <tr><td class='paramName'><%= parameter.name %></td>
+                <td>
+                    <%# displaying parameter.value nicely if it is an integer: display '1' instead of '1.0' %>
+                    <div><%= parameter.value % 1 == 0 ? parameter.value.to_i : parameter.value %></div>
+                    <%# information in here mirrors above, but it is an input tag %>
+                    <%= hidden_field_tag("old_exp_params[#{parameter.name}]", parameter.value) %>
+                </td>
+                <td><%= number_field_tag("new_exp_params[#{parameter.name}]", nil, min: 0, step: 'any', class: 'parameterEntry') %></td>
+            </tr>
+        <% end %>
+    <% end %>
+    </tbody>
+</table>

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Experiment:</strong>
+  <%= @experimenter.experiment %>
+</p>
+
+<p>
+  <strong>Person:</strong>
+  <%= @experimenter.person %>
+</p>
+
+<p>
+  <strong>Role:</strong>
+  <%= @experimenter.role %>
+</p>
+
+<p>
+  <strong>Empcr:</strong>
+  <%= @experimenter.empcr %>
+</p>
+
+<p>
+  <strong>Uncertain empcr:</strong>
+  <%= @experimenter.uncertain_empcr %>
+</p>
+
+<p>
+  <strong>Seq:</strong>
+  <%= @experimenter.seq %>
+</p>
+
+<p>
+  <strong>Uncertain seq:</strong>
+  <%= @experimenter.uncertain_seq %>
+</p>
+
+<%= link_to 'Edit', edit_experimenter_path(@experimenter) %> |
+<%= link_to 'Back', experimenters_path %>

@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/repos/forensics/!svn/ver/419/Forensics/intern_projects/nelson_chiu/Forensics/app/views/families
+END
+edit.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/repos/forensics/!svn/ver/85/Forensics/intern_projects/nelson_chiu/Forensics/app/views/families/edit.html.erb
+END
+index.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/repos/forensics/!svn/ver/419/Forensics/intern_projects/nelson_chiu/Forensics/app/views/families/index.html.erb
+END
+new.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/repos/forensics/!svn/ver/85/Forensics/intern_projects/nelson_chiu/Forensics/app/views/families/new.html.erb
+END
+show.json.jbuilder
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/repos/forensics/!svn/ver/85/Forensics/intern_projects/nelson_chiu/Forensics/app/views/families/show.json.jbuilder
+END
+show.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/repos/forensics/!svn/ver/161/Forensics/intern_projects/nelson_chiu/Forensics/app/views/families/show.html.erb
+END
+_form.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/repos/forensics/!svn/ver/161/Forensics/intern_projects/nelson_chiu/Forensics/app/views/families/_form.html.erb
+END
+index.json.jbuilder
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/repos/forensics/!svn/ver/85/Forensics/intern_projects/nelson_chiu/Forensics/app/views/families/index.json.jbuilder
+END

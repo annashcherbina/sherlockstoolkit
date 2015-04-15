@@ -1,0 +1,22 @@
+<h1>
+  Loci in <%= @loci_group.name %>
+</h1>
+
+<table class="display dataTable" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>Locus Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @locus_names.each do |locus_name| %>
+        <tr>
+            <td>
+            <%= locus_name %>
+            </td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
+
+<%= link_to 'Back to Index', loci_groups_path %>

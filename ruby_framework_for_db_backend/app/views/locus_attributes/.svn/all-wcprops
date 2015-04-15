@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/repos/forensics/!svn/ver/419/Forensics/intern_projects/nelson_chiu/Forensics/app/views/locus_attributes
+END
+edit.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/repos/forensics/!svn/ver/85/Forensics/intern_projects/nelson_chiu/Forensics/app/views/locus_attributes/edit.html.erb
+END
+index.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/repos/forensics/!svn/ver/419/Forensics/intern_projects/nelson_chiu/Forensics/app/views/locus_attributes/index.html.erb
+END
+new.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/repos/forensics/!svn/ver/85/Forensics/intern_projects/nelson_chiu/Forensics/app/views/locus_attributes/new.html.erb
+END
+show.json.jbuilder
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/repos/forensics/!svn/ver/85/Forensics/intern_projects/nelson_chiu/Forensics/app/views/locus_attributes/show.json.jbuilder
+END
+show.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/repos/forensics/!svn/ver/161/Forensics/intern_projects/nelson_chiu/Forensics/app/views/locus_attributes/show.html.erb
+END
+_form.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/repos/forensics/!svn/ver/161/Forensics/intern_projects/nelson_chiu/Forensics/app/views/locus_attributes/_form.html.erb
+END
+index.json.jbuilder
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/repos/forensics/!svn/ver/85/Forensics/intern_projects/nelson_chiu/Forensics/app/views/locus_attributes/index.json.jbuilder
+END

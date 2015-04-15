@@ -1,0 +1,2 @@
+module AlleleReferencesHelper
+end

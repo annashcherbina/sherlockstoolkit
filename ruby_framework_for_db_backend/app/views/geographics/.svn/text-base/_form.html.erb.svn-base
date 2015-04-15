@@ -1,0 +1,12 @@
+<%= render(partial: 'layouts/error_messages', locals: {object: @geographic}) %>
+
+<%= form_for(@geographic) do |f| %>
+
+    <div class="field">
+        <%= f.label :region_name %><br>
+        <%= f.text_field :region_name %>
+    </div>
+    <div class="actions">
+        <%= f.submit %>
+    </div>
+<% end %>

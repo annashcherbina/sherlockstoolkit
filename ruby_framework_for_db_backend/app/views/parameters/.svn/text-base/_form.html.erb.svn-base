@@ -1,0 +1,21 @@
+<%= render(partial: 'layouts/error_messages', locals: {object: @parameter}) %>
+
+<%= form_for(@parameter) do |f| %>
+
+
+    <div class="field">
+        <%= f.label :category %><br>
+        <%= f.text_field :category %>
+    </div>
+    <div class="field">
+        <%= f.label :name %><br>
+        <%= f.text_field :name %>
+    </div>
+    <div class="field">
+        <%= f.label :value %><br>
+        <%= f.number_field :value %>
+    </div>
+    <div class="actions">
+        <%= f.submit %>
+    </div>
+<% end %>

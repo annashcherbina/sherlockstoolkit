@@ -1,0 +1,57 @@
+<%# each element in the experiments_details is either a string or an Experiment, this iterates through each element and
+    outputs it nicely for the partial page %>
+<h3>Experimental Details:</h3>
+
+
+<table cellpadding="2" cellspacing="0" border="0" class="pretty">
+    <thead>
+    <tr>
+        <th>Experiment Name</th>
+        <th>Hash</th>
+        <th>Instrument</th>
+        <th>Panel</th>
+        <th>Run Date</th>
+        <th>Is Mixture</th>
+        <th>Final Lib Reads</th>
+        <th>Wells with ISP</th>
+        <th>Live ISP</th>
+        <th>Filtered Polyclonal</th>
+        <th>PCR</th>
+        <th>Amp Lig Quant</th>
+        <th>emPCR Date</th>
+        <th>Template Amount Loaded</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% experiments_details.each do |line| %>
+        <% if line.kind_of?(Experiment) %>
+            <tr>
+                <td><%= line.name %></td>
+                <td><%= line.hash_name %></td>
+                <td><%= line.instrument.name if line.instrument %></td>
+                <td><%= line.panel.description if line.panel %></td>
+                <td><%= line.run_date.strftime("%B %d, %Y") if line.run_date %></td>
+                <td><%= line.is_mixture ? "Yes" : "No" %></td>
+                <td><%= number_with_delimiter(line.final_lib_reads) %></td>
+                <td><%= number_with_delimiter(line.wells_with_isp) %></td>
+                <td><%= number_with_delimiter(line.live_isp) %></td>
+                <td><%= number_with_delimiter(line.filtered_polyclonal) %></td>
+                <td><%= line.pcr %></td>
+                <td><%= line.amp_lig_quant %></td>
+                <td><%= line.empcr_date.strftime("%B %d, %Y") if line.empcr_date %></td>
+                <td><%= line.template_amount_loaded %></td>
+            </tr>
+            <% unless line.notes.nil? %>
+                <tr>
+                    <td class="left-align" colspan="99"><%= "Notes: #{line.notes}" %></td>
+                </tr>
+            <% end %>
+        <% else %>
+            <tr>
+                <td class="left-align" colspan="99"><h4><%= line %></h4></td>
+            </tr>
+            <br>
+        <% end %>
+    <% end %>
+    </tbody>
+</table>

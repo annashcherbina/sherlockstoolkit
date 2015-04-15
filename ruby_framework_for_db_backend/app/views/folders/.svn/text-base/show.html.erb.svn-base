@@ -1,0 +1,100 @@
+<h1><%= "Displaying Folder: #{@folder.name}" %></h1>
+
+<table cellpadding="2" cellspacing="0" border="0" class="pretty">
+    <thead>
+        <tr>
+            <th>Owner</th>
+            <th>Parent</th>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><%= @folder.user.name %></td>
+            <td><%= @folder.parent ? link_to(@folder.parent.name, folder_path(@folder.parent.id)) : link_to('/', folders_path) %></td>
+            <td><%= @folder.name %></td>
+            <td><%= @folder.description %></td>
+        </tr>
+    </tbody>
+</table>
+<br>
+
+<% if !@folder.children.empty? %>
+    <h3><%= "Subfolders of #{@folder.name}" %></h3>
+    <table cellpadding="2" cellspacing="0" border="0" class="pretty">
+        <thead>
+        <tr>
+            <th>Folder Name</th>
+            <th>Owner</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <% @subfolders.each do |subfolder| %>
+            <tr>
+                <td><%= link_to(subfolder.name, subfolder) %></td>
+                <td><%= subfolder.user_id ? subfolder.user.name : 'System' %></td>
+                <td><%= subfolder.description %></td>
+            </tr>
+        <% end %>
+        </tbody>
+    </table>
+<% end %>
+
+<!--
+<% if @folder.id == User.find(session[:user_id]).home_folder_id %>
+    <p>
+    <%= link_to("Create Subfolder of #{@folder.name}", new_folder_path(parent_folder_id: @folder.id)) %>
+    </p>
+    <br>
+<% end %>
+-->
+
+<% if !@attachment_info.empty? -%>
+    <%= link_to('Files in this folder', attachments_path(folder_id: @folder.id)) %>
+    <ul>
+        <% @attachment_info.each do |attachment_file| -%>
+        <li>
+            <%= link_to(attachment_file.file_name, download_attachment_path(attachment_file.id)) %>
+        </li>
+        <% end %>
+    </ul>
+    <br>
+<% end -%>
+
+
+<% if !@image_info.empty? -%>
+    <%= link_to('Images in this folder', images_path(folder_id: @folder.id)) %>
+    <table cellpadding="2" cellspacing="0" border="0" class="pretty">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Image</th>
+                <th>Download</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% @image_info.each do |image_file| -%>
+                <tr>
+                    <td><%= image_file.file_name %></td>
+                    <td><%= link_to(image_tag(show_img_image_path(image_file.id), ISMAP: 'false', border: '0', size: '160x80', alt: image_file.file_name),
+                                    image_path(image_file.id)) %></td>
+                    <td><%= link_to('Download', download_image_path(image_file.id)) %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <br>
+<% end -%>
+
+<% if (session[:user_id] == @folder.id || session[:is_admin]) && @folder.level > 1 && @folder.is_empty? %>
+    <%= link_to 'Delete this folder', @folder, method: :delete, data: {confirm: 'Are you sure?'} %>
+    <br>
+<% end %>
+
+<% if @folder.id == User.find(session[:user_id]).home_folder_id %>
+    <%= link_to 'Upload New File to Your Home Folder', new_attachment_path %>
+<% end %>

@@ -1,0 +1,32 @@
+<%= render(partial: 'layouts/error_messages', locals: {object: @panel_locus}) %>
+
+<%= form_for(@panel_locus) do |f| %>
+
+  <div class="field">
+    <%= f.label :panel_id %><br>
+    <%= f.text_field :panel_id %>
+  </div>
+  <div class="field">
+    <%= f.label :locus_id %><br>
+    <%= f.text_field :locus_id %>
+  </div>
+  <div class="field">
+    <%= f.label :exclude %><br>
+    <%= f.check_box :exclude %>
+  </div>
+  <div class="field">
+    <%= f.label :ambiguous %><br>
+    <%= f.number_field :ambiguous %>
+  </div>
+  <div class="field">
+    <%= f.label :low %><br>
+    <%= f.number_field :low %>
+  </div>
+  <div class="field">
+    <%= f.label :strand_bias %><br>
+    <%= f.number_field :strand_bias %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

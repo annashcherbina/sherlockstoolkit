@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/repos/forensics/!svn/ver/705/Forensics/intern_projects/nelson_chiu/Forensics/app/views/layouts
+END
+_buttons.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/repos/forensics/!svn/ver/657/Forensics/intern_projects/nelson_chiu/Forensics/app/views/layouts/_buttons.html.erb
+END
+_error_messages.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/repos/forensics/!svn/ver/161/Forensics/intern_projects/nelson_chiu/Forensics/app/views/layouts/_error_messages.html.erb
+END
+_title.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/repos/forensics/!svn/ver/705/Forensics/intern_projects/nelson_chiu/Forensics/app/views/layouts/_title.html.erb
+END
+_parameters.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/repos/forensics/!svn/ver/615/Forensics/intern_projects/nelson_chiu/Forensics/app/views/layouts/_parameters.html.erb
+END
+application.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/repos/forensics/!svn/ver/697/Forensics/intern_projects/nelson_chiu/Forensics/app/views/layouts/application.html.erb
+END

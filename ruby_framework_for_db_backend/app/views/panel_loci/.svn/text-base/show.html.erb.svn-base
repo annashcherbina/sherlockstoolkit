@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Panel:</strong>
+  <%= @panel_locus.panel %>
+</p>
+
+<p>
+  <strong>Locus:</strong>
+  <%= @panel_locus.locus %>
+</p>
+
+<p>
+  <strong>Exclude:</strong>
+  <%= @panel_locus.exclude %>
+</p>
+
+<p>
+  <strong>Ambiguous:</strong>
+  <%= @panel_locus.ambiguous %>
+</p>
+
+<p>
+  <strong>Low:</strong>
+  <%= @panel_locus.low %>
+</p>
+
+<p>
+  <strong>Strand bias:</strong>
+  <%= @panel_locus.strand_bias %>
+</p>
+
+<%= link_to 'Edit', edit_panel_locus_path(@panel_locus) %> |
+<%= link_to 'Back', panel_loci_path %>

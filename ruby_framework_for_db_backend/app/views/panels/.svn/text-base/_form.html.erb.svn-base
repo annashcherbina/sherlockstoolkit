@@ -1,0 +1,24 @@
+<%= render(partial: 'layouts/error_messages', locals: {object: @panel}) %>
+
+<%= form_for(@panel, :html => {:multipart => true}) do |f| %>
+
+    <div class="field">
+        <%= f.label :description %><br>
+        <label>Required: e.g. "Optmix 1568" or "Kinship 39359"</label><br>
+        <%= f.text_field :description %>
+    </div>
+    <div class="field">
+        <%= f.label :panel_type %><br>
+        <%= f.select(:panel_type, Panel::PANEL_TYPE) %>
+    </div>
+    <% if @panel.new_record? %>
+        <div class="field">
+            <%= f.label :file %><br>
+            <%= f.file_field("datafile") %><br>
+            <label>Max file size is 128 megabytes for panels.</label>
+        </div>
+    <% end %>
+    <div class="actions">
+        <%= f.submit %>
+    </div>
+<% end %>

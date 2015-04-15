@@ -1,0 +1,2 @@
+module STRsHelper
+end

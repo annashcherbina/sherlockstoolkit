@@ -1,0 +1,124 @@
+<h1>Non Mixture Samples</h1>
+
+<br>
+
+<div id="tabs">
+    <%= form_tag(action: :form_action, id: 'form') do %>
+        <ul>
+            <li><a href="#tabs-1">Samples</a></li>
+            <li><a href="#tabs-2">Parameters</a></li>
+        </ul>
+        <%# tab 1 %>
+        <div id="tabs-1">
+            <div>
+                <table>
+                    <tr>
+                        <td>Sample Quality:</td>
+                        <td>
+                            <%= select_tag('Sample Quality', options_for_select({:DEF => 0, :Q20 => 20, :Q30 => 30, :Q40 => 40}, 0)) %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Locus Group</td>
+                        <td><%= select_tag('Locus Group', options_for_select(Hash[LociGroup.pluck(:name, :id).unshift(["All", 0])], 0)) %></td>
+                    </tr>
+                    <tr>
+                        <td>Parameter Group Owner:</td>
+                        <td><%= select_tag('Param Owner',
+                                           options_for_select(Hash[Parameter.uniq.pluck(:user_id).map{ |elem| [@user_hash[elem], elem] }]),
+                                           class: 'ownerSelect') %>
+                            </td>
+                        <td>Parameter Group Name:</td>
+                        <td><%= select_tag('Param Group', '', class: 'groupSelect') %></td>
+                    </tr>
+                    <tr>
+                        <td>Kinship Training Module</td>
+                        <td><%= select_tag('Kinship Training Module',
+                                           options_for_select(KinshipTrainingModule.pluck(:name).push('New Training Module'))) %></td>
+                        <td><%= text_field_tag('New Kinship Module Name') %></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <%= submit_tag('Replicate', name: 'form_action', data: { disable_with: 'Please wait...' }) %>
+                            <%= submit_tag('Ancestries', name: 'form_action', data: { disable_with: '...' }) %>
+                            <%= submit_tag('Quality Control', name: 'form_action', data: { disable_with: '...' }) %>
+                            <%= submit_tag('Total Reads by Experiment', name: :form_action, data: {disable_with: '...'}) %>
+                            <%= submit_tag('Kinship', name: 'form_action', data: { disable_with: '...' }) %>
+                            <input type="button" class="resetFormButton" value="Reset Form">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <%# Accordion at panel level %>
+            <% @samples_view_index_hash.sort_by{ |panel_name, panel_details| panel_name ? panel_name : 'zzz' }.each do |panel| %>
+                <div class="accordion">
+                    <h3><a><%= panel[0] %></a></h3>
+
+                    <div>
+                        <%# Accordion at source level %>
+                        <% panel[1].sort_by { |source_name, source_details| source_name ? source_name : 'zzz' }.each do |source| %>
+                            <div class="accordion" id="<%= "#{panel[0]}-#{source[0]}".delete(' ') %>">
+                                <div style="height: 1.25em">
+                                    <div style="float:left;">
+                                        <a><%= source[0] || 'Unknown Source' %></a>
+                                    </div>
+
+                                    <div style="float: right;">
+                                        <input type="button" class="selectBestSamplesButton"
+                                               data-target="<%= "#{panel[0]}-#{source[0]}".delete(' ') %>"
+                                               value="<%= "Select highest read samples from #{panel[0]}-#{source[0]} for each person" %>">
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <%# Accordion at person level %>
+                                    <% source[1].sort_by { |id_code, id_code_samples| id_code }.each do |person| %>
+                                        <div class="accordion">
+                                            <h3><a><%= person[0] %></a></h3>
+
+                                            <div>
+                                                <%# table of reference samples per person %>
+                                                <table cellpadding="2" cellspacing="0" border="0" class="pretty samples_table">
+                                                    <tbody>
+                                                    <tr>
+                                                        <% person[1].sort_by { |sample| sample.total_reads }.reverse.each do |sample| %>
+                                                            <td class="sample_cell <%= "qual#{sample.quality_thresh}" %>">
+                                                                <%= check_box_tag("chosen_samples[#{sample.id}]") %>
+                                                                <%= "#{@experiments_hash[sample.experiment_id].hash_name} #{@barcodes_hash[sample.barcode_id].name}" %>
+                                                                <br>
+                                                                <%= "#{@experiments_hash[sample.experiment_id].name} (#{number_with_delimiter(sample.total_reads)})" %>
+                                                                <br>
+                                                                <%= select_tag("replicate_samples_status[#{sample.id}]", options_for_select(%w(Replicate Truth), 'Replicate')) %>
+                                                            </td>
+                                                        <% end %>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                        </div>
+                                    <% end %>
+                                </div>
+
+                            </div>
+                        <% end %>
+                    </div>
+
+                </div>
+            <% end %>
+        </div>
+
+        <div id="tabs-2">
+            <%= render(partial: 'parameters/paramstab', locals: {user_hash: @user_hash,
+                                                                 system_params: @system_params,
+                                                                 param_categories: ['Allele Calling', 'Bad SNPs', 'Kinship', 'Ancestry']}) %>
+        </div>
+
+    <% end %>
+</div>
+
+<%# This controls the drop down parameters menu to autofill the td cells in the parameters table %>
+<% content_for :javascripts do %>
+    <%= javascript_include_tag('experiments_and_samples', 'samples') %>
+<% end %>

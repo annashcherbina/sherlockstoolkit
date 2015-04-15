@@ -1,0 +1,20 @@
+<%= render(partial: 'layouts/error_messages', locals: {object: @primer}) %>
+
+<%= form_for(@primer) do |f| %>
+
+    <div class="field">
+        <%= f.label :name %><br>
+        <%= f.text_field :name %>
+    </div>
+    <div class="field">
+        <%= f.label :is_forward %><br>
+        <%= f.check_box :is_forward %>
+    </div>
+    <div class="field">
+        <%= f.label :sequence %><br>
+        <%= f.text_field :sequence %>
+    </div>
+    <div class="actions">
+        <%= f.submit %>
+    </div>
+<% end %>

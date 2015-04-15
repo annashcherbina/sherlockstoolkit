@@ -1,0 +1,30 @@
+<h1>Choices</h1>
+
+<table class="display dataTable" cellspacing="0" width="100%">
+
+    <thead>
+    <tr>
+        <th>Attribute</th>
+        <th>Name</th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @choices.each do |choice| %>
+        <tr>
+            <td><%= choice.attribute_id %></td>
+            <td><%= choice.name %></td>
+            <td><%= link_to 'Show', choice %></td>
+            <td><%= link_to 'Edit', edit_choice_path(choice) %></td>
+            <td><%= link_to 'Destroy', choice, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+        </tr>
+    <% end %>
+    </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Choice', new_choice_path %>

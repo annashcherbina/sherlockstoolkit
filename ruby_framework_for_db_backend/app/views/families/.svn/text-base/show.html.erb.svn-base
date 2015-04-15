@@ -1,0 +1,12 @@
+<p>
+    <strong>Name:</strong>
+    <%= @family.name %>
+</p>
+
+<p>
+    <strong>Source:</strong>
+    <%= @family.source %>
+</p>
+
+<%= link_to 'Edit', edit_family_path(@family) %> |
+<%= link_to 'Back', families_path %>

@@ -1,0 +1,20 @@
+<%= render(partial: 'layouts/error_messages', locals: {object: @ancestry}) %>
+
+<%= form_for(@ancestry) do |f| %>
+
+    <div class="field">
+        <%= f.label :person_id %><br>
+        <%= f.text_field :person_id %>
+    </div>
+    <div class="field">
+        <%= f.label :ethnicity_id %><br>
+        <%= f.text_field :ethnicity_id %>
+    </div>
+    <div class="field">
+        <%= f.label :percent %><br>
+        <%= f.text_field :percent %>
+    </div>
+    <div class="actions">
+        <%= f.submit %>
+    </div>
+<% end %>

@@ -1,0 +1,16 @@
+<%= render(partial: 'layouts/error_messages', locals: {object: @barcode}) %>
+
+<%= form_for(@barcode) do |f| %>
+
+    <div class="field">
+        <%= f.label :panel_id %><br>
+        <%= f.number_field :panel_id %>
+    </div>
+    <div class="field">
+        <%= f.label :barcode_type %><br>
+        <%= f.text_field :barcode_type %>
+    </div>
+    <div class="actions">
+        <%= f.submit %>
+    </div>
+<% end %>
