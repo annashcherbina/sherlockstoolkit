@@ -1,0 +1,444 @@
+import os; 
+version=1.0
+max_0_ma=0.1 
+max_0_ma_id=-1 
+min_1_ma=0.3 
+min_1_ma_id=-1 
+max_1_ma=0.7
+max_1_ma_id=-1 
+min_2_ma=0.9 
+min_2_ma_id=-1
+min_calls=50; 
+min_calls_id= -1 
+ambiguous_thresh=90;
+ambiguous_thresh_id=-1
+strand_bias_thresh=90;
+strand_bias_thresh_id=-1  
+
+
+ #create output directories for each data type, if they don't exist yet 
+output_image='output/kinship_image/'
+output_kinexcel='output/kinship_excel/'
+if not os.path.exists('output'):
+    os.mkdir('output') 
+if not os.path.exists(output_image): 
+    os.mkdir(output_image) 
+if not os.path.exists(output_kinexcel): 
+    os.mkdir(output_kinexcel) 
+
+smax_degree=11 #number of degrees of relationship to analyze
+smax_degree_bayes=7 #number of degrees of relationship to analyze in Bayesian approach 
+max_impossible=60 
+max_impossible_id=-1 
+
+
+
+#for plotting relationships in the protonKinCompare script
+#relationships with expected shared DNA 12.5 % or higher are labeled specifically , more distant relationships 
+#are labeled and plotted by degree of relationship 
+relationToMarker=dict() 
+relationToMarker['parent']='gs'
+relationToMarker['child']='gs'
+relationToMarker['sibling']='ko'
+relationToMarker['half sibling']='mo'
+relationToMarker['grandchild']='m^'
+relationToMarker['grandparent']='m^' 
+relationToMarker['aunt/uncle']='md'
+relationToMarker['niece/nephew']='md'
+relationToMarker['half aunt/uncle']='bs'
+relationToMarker['half niece/nephew']='bs'
+relationToMarker['great grandparent']='b^'
+relationToMarker['great grandchild']='b^'
+relationToMarker['great aunt/great uncle']='bd'
+relationToMarker['great niece/great nephew']='bd'
+relationToMarker['first cousin']='b>'
+relationToMarker['cousin']='b>' 
+relationToMarker['unrelated']='rx' 
+relationToMarker['not calculated']='kx'
+
+
+#by degree 
+relationToMarker['4']='r^'
+relationToMarker['5']='gx'
+relationToMarker['6']='bo'
+relationToMarker['7']='g<' 
+relationToMarker['8']='bx'
+relationToMarker['9']='k*' 
+relationToMarker['10']='r*' 
+relationToMarker['11']='r*' 
+relationToMarker['12']='r*' 
+relationToMarker['13']='r*' 
+relationToMarker['14']='r*' 
+relationToMarker['15']='r*' 
+relationToMarker['16']='r*' 
+relationToMarker['17']='r*' 
+relationToMarker['18']='r*' 
+relationToMarker['19']='r*' 
+relationToMarker['20']='r*' 
+relationToMarker['21']='r*' 
+
+
+steps=dict() 
+#number of steps to go up, number of steps to then go down 
+steps['parent']=[1,0]
+steps['mother']=[1,0]
+steps['father']=[1,0]
+steps['child']=[0,1] 
+steps['son']=[0,1] 
+steps['daughter']=[0,1]
+steps['sibling']=[1,1] 
+steps['brother']=[1,1]
+steps['sister']=[1,1]
+steps['half sibling']=[1,1] 
+steps['half brother']=[1,1] 
+steps['half siste']=[1,1] 
+steps['grandchild']=[0,2] 
+steps['grandson']=[0,2] 
+steps['granddaughter']=[0,2]
+steps['grandparent']=[2,0] 
+steps['grandmother']=[2,0] 
+steps['grandfather']=[2,0]  
+steps['aunt']=[2,1]
+steps['uncle']=[2,1]
+steps['half aunt']=[2,1] 
+steps['half uncle']=[2,1] 
+steps['half nephew']=[2,1] 
+steps['half niece']=[2,1]  
+steps['great grandparent']=[3,0] 
+steps['great grandmother']=[3,0] 
+steps['great grandfather']=[3,0] 
+steps['niece']=[1,2] 
+steps['nephew']=[1,2] 
+steps['great grandchild']=[0,3] 
+steps['great granddaughter']=[0,3] 
+steps['great grandson']=[0,3] 
+steps['great great grandparent']=[4,0] 
+steps['great great grandmother']=[4,0] 
+steps['great great grandfather']=[4,0] 
+steps['great aunt']=[3,1] 
+steps['great uncle']=[3,1] 
+steps['first cousin']=[2,2]
+steps['great niece']=[1,3] 
+steps['great nephew']=[1,3] 
+steps['great great uncle']=[4,1]
+steps['great great aunt']=[4,1] 
+steps['first cousin once removed']=[2,3] #TODO: maybe need to add the other possibility [3,2] 
+steps['first cousin twice removed']=[2,4] #TODO: maybe need to add the other possibility [4,2]
+steps['second cousin']= [3,3]
+steps['grat great nephew']=[1,4]
+steps['great great niece']=[1,4]
+steps['second cousin once removed']=[3,4] #also [4,3]
+steps['first cousin thrice removed']=[2,5]
+steps['third cousin']=[4,4]
+steps['second cousin twice removed']=[3,5]
+steps['third cousin once removed']=[4,5]
+steps['second cousin thrice removed']=[3,6]
+steps['third cousin twice removed']=[4,6]
+steps['third cousin thrice removed']=[4,7]
+steps['great great grandchild']=[0,4] 
+steps['great great grandson']=[0,4] 
+steps['great great granddaughter']=[0,4] 
+
+steps_to_relationship=dict() 
+steps_to_relationship[tuple([0,1])]={'u':"child",'m':"son",'f':"daughter"}
+steps_to_relationship[tuple([1,0])]={'u':"parent",'m':"father",'f':"mother"}  
+steps_to_relationship[tuple([1,1])]={'u':"sibling",'m':"brother",'f':"sister"}
+steps_to_relationship[tuple([0,2])]={'u':"grandchild",'m':"grandson",'f':"granddaughter"} 
+steps_to_relationship[tuple([2,0])]={'u':"grandparent",'m':"grandfather",'f':"grandmother"}
+steps_to_relationship[tuple([2,1])]={'u':"aunt/uncle",'m':"uncle",'f':"aunt"}
+steps_to_relationship[tuple([3,0])]={'u':"great grandparent",'m':"great grandfather",'f':"great grandmother"}
+steps_to_relationship[tuple([1,2])]={'u':"niece/nephew",'m':"nephew",'f':"niece"}
+steps_to_relationship[tuple([0,3])]={'u':"great grandchild",'m':"great grandson",'f':"great granddaughter"}
+steps_to_relationship[tuple([0,4])]={'u':"great great grandchild",'m':"great great grandson",'f':"great great granddaughter"}
+steps_to_relationship[tuple([4,0])]={'u':"great great grandparent",'m':"great great grandfather",'f':"great great grandmother"}
+steps_to_relationship[tuple([5,0])]={'u':"great great great grandparent",'m':"great great great grandfather",'f':"great great great grandmother"}
+steps_to_relationship[tuple([0,5])]={'u':"great great great grandchild",'m':"great great great grandson",'f':"great great great granddaughter"}
+steps_to_relationship[tuple([6,0])]={'u':"great great great great grandparent",'m':"great great great great grandfather",'f':"great great great great grandmother"}
+steps_to_relationship[tuple([0,6])]={'u':"great great great great grandchild",'m':"great great great great grandson",'f':"great great great great granddaughter"}
+steps_to_relationship[tuple([7,0])]={'u':"great great great great great grandparent",'m':"great great great great great grandfather",'f':"great great great great great grandmother"}
+steps_to_relationship[tuple([3,1])]={'u':"great aunt/great uncle",'m': "great uncle",'f':"great aunt"}
+steps_to_relationship[tuple([2,2])]={'u':"first cousin",'m':"first cousin",'f':"first cousin"}
+steps_to_relationship[tuple([1,3])]={'u':"great niece/great nephew",'m':"great nephew",'f':"great niece"}
+steps_to_relationship[tuple([4,1])]={'u':"great great uncle/great great aunt",'m':"great great uncle",'f':"great great aunt"}
+steps_to_relationship[tuple([5,1])]={'u':"great great great uncle/great great great aunt",'m':"great great great uncle",'f':"great great great aunt"}
+steps_to_relationship[tuple([1,5])]={'u':"great great great niece/great great great nephew",'m':"great great great nephew",'f':"great great great niece"}
+steps_to_relationship[tuple([6,1])]={'u':"great great great granduncle/great great great grandaunt",'m':"great great great granduncle",'f':"great great great grandaunt"}
+steps_to_relationship[tuple([1,6])]={'u':"great great great great nephew/great great great great niece",'m':"great great great great nephew",'f':"great great great great niece"}
+steps_to_relationship[tuple([2,3])]={'u':"first cousin once removed",'m':"first cousin once removed",'f':"first cousin once removed"}
+steps_to_relationship[tuple([3,2])]={'u':"first cousin once removed",'m':"first cousin once removed",'f':"first cousin once removed"}
+steps_to_relationship[tuple([2,4])]={'u':"first cousin twice removed",'m':"first cousin twice removed",'f':"first cousin twice removed"}
+steps_to_relationship[tuple([4,2])]={'u':"first cousin twice removed",'m':"first cousin twice removed",'f':"first cousin twice removed"}
+steps_to_relationship[tuple([5,2])]={'u':"first cousin thrice removed",'m':"first cousin thrice removed",'f':"first cousin thrice removed"}
+steps_to_relationship[tuple([5,3])]={'u':"second cousin twice removed",'m':"second cousin twice removed",'f':"second cousin twice removed"}
+steps_to_relationship[tuple([3,3])]={'u':"second cousin",'m':"second cousin",'f':"second cousin"}
+steps_to_relationship[tuple([1,4])]={'u':"great great nephew/great great niece",'m':"great great nephew/great great niece",'f':"great great nephew/great great niece"}
+steps_to_relationship[tuple([3,4])]={'u':"second cousin once removed",'m':"second cousin once removed",'f':"second cousin once removed"} 
+steps_to_relationship[tuple([2,5])]={'u':"first cousin thrice removed",'m':"first cousin thrice removed",'f':"first cousin thrice removed"} 
+steps_to_relationship[tuple([4,3])]={'u':"second cousin once removed",'m':"second cousin once removed",'f':"second cousin once removed"}
+steps_to_relationship[tuple([4,4])]={'u':"third cousin",'m':"third cousin",'f':"third cousin"}
+steps_to_relationship[tuple([3,5])]={'u':"second cousin twice removed",'m':"second cousin twice removed",'f':"second cousin twice removed"} 
+steps_to_relationship[tuple([4,5])]={'u':"third cousin once removed",'m':"third cousin once removed",'f':"third cousin once removed"}
+steps_to_relationship[tuple([3,6])]={'u':"second cousin thrice removed",'m':"second cousin thrice removed",'f':"second cousin thrice removed"}
+steps_to_relationship[tuple([4,6])]={'u':"third cousin twice removed",'m':"third cousin twice removed",'f':"third cousin twice removed"} 
+steps_to_relationship[tuple([4,7])]={'u':"third cousin thrice removed",'m':"third cousin thrice removed",'f':"third cousin thrice removed"} 
+steps_to_relationship[tuple([5,4])]={'u':"third cousin once removed",'m':"third cousin once removed",'f':"third cousin once removed"} 
+steps_to_relationship[tuple([5,5])]={'u':"fourth cousin",'m':"fourth cousin",'f':"fourth cousin"}
+steps_to_relationship[tuple([6,6])]={'u':"fifth cousin",'m':"fifth cousin",'f':"fifth cousin"} 
+steps_to_relationship[tuple([5,6])]={'u':"fourth cousin once removed",'m':"fourth cousin once removed",'f':"fourth cousin once removed"} 
+steps_to_relationship[tuple([6,5])]={'u':"fourth cousin once removed",'m':"fourth cousin once removed",'f':"fourth cousin once removed"} 
+steps_to_relationship[tuple([6,2])]={'u':"first cousin four times removed",'m':"first cousin four times removed",'f':"first cousin four times removed"} 
+steps_to_relationship[tuple([2,6])]={'u':"first cousin four times removed",'m':"first cousin four times removed",'f':"first cousin four times removed"} 
+steps_to_relationship[tuple([6,3])]={'u':"second cousin thrice removed",'m':"second cousin thrice removed",'f':"second cousin thrice removed"} 
+steps_to_relationship[tuple([6,4])]={'u':"third cousin thrice removed",'m':"third cousin thrice removed",'f':"third cousin thrice removed"} 
+
+
+
+relationships=dict() 
+relationships[1]=['parent','mother','father','child','son','daughter','sibling','brother','sister'] 
+relationships[2]=['half sibling','half brother','half sister','grandchild','grandson','granddaughter','aunt','uncle','niece','nephew']
+relationships[3]=['gread grandparent','great grandmother','great grandfather','great grandchild','great granddaughter','great grandson','half aunt','half uncle','half niece','half nephew']
+relationships[4]=['great great grandparent','great great grandmother','great great grandfather','great aunt','great uncle','first cousin','great niece','great nephew']
+relationships[5]=['great great uncle','great great aunt','first cousin once removed','great great nephew','great great niece']
+relationships[6]=['second cousin','first cousin twice removed']
+relationships[7]=['second cousin once removed','first cousin thrice removed']
+relationships[8]=['third cousin','second cousin twice removed']
+relationships[9]=['third cousin once removed','second cousin thrice removed'] 
+relationships[10]=['third cousin twice removed','fourth cousin'] 
+relationships[11]=['third cousin thrice removed'] 
+
+
+
+gender=dict() 
+gender['mother']='f'
+gender['father']='m'
+gender['son']='m'
+gender['daughter']='f'
+gender['brother']='m'
+gender['sister']='f'
+gender['half brother']='m'
+gender['half sister']='f'
+gender['grandson']='m'
+gender['granddaughter']='f'
+gender['aunt']='f'
+gender['uncle']='m' 
+gender['great grandmother']='f' 
+gender['great grandfather']='m'
+gender['niece']='f'
+gender['nephew']='m'
+gender['great graddaughter']='f' 
+gender['great grandson']='m'
+gender['great great grandmother']='f' 
+gender['great great grandfather']='m' 
+gender['great great great grandmother']='f' 
+gender['great great great grandfather']='m' 
+gender['great great great great grandmother']='f' 
+gender['great great great great grandfather']='m' 
+gender['great great great great great grandmother']='f' 
+gender['great great great great great grandfather']='m' 
+
+
+gender['great great great granddaughter']='f' 
+gender['great great great grandson']='m' 
+gender['great great great great granddaughter']='f' 
+gender['great great great great grandson']='m' 
+gender['great great great great great granddaughter']='f' 
+gender['great great great great great grandson']='m' 
+
+gender['great aunt']='f'
+gender['great uncle']='m'
+gender['great niece']='f'
+gender['great nephew']='m' 
+gender['great great great uncle']='m'
+gender['great great great aunt']='f'
+gender['great great great nephew']='m' 
+gender['great great great niece']='f' 
+
+gender['great great great granduncle']='m'
+gender['great great great grandaunt']='f'
+gender['great great great grandnephew']='m' 
+gender['great great great grandniece']='f' 
+
+gender['half aunt']='f' 
+gender['half uncle']='m' 
+gender['half niece']='f' 
+gender['half nephew']='m' 
+
+
+degree=dict() 
+degree['mother']=[1,50] 
+degree['father']=[1,50] 
+degree['parent']=[1,50] 
+degree['child']=[1,50] 
+degree['son']=[1,50] 
+degree['daughter']=[1,50] 
+degree['sibling']=[1,50] 
+degree['sister']=[1,50] 
+degree['brother']=[1,50] 
+degree['grandparent']=[2,25] 
+degree['grandmother']=[2,25] 
+degree['grandfather']=[2,25]
+degree['grandchild']=[2,25]
+degree['granddaughter']=[2,25]
+degree['grandson']=[2,25] 
+degree['aunt']=[2,25] 
+degree['uncle']=[2,25] 
+degree['aunt/uncle']=[2,25]
+degree['niece']=[2,25]
+degree['nephew']=[2,25] 
+degree['niece/nephew']=[2,25]
+degree['half sibling']=[2,25] 
+degree['half brother']=[2,25]
+degree['half sister']=[2,25] 
+degree['half aunt/uncle']=[3,12.5] 
+degree['half aunt']=[3,12.5] 
+degree['half uncle']=[3,12.5] 
+degree['half niece']=[3,12.5] 
+degree['half nephew']=[3,12.5] 
+degree['great grandparent']=[3,12.5]
+degree['great grandmother']=[3,12.5] 
+degree['great grandfather']=[3,12.5] 
+degree['great grandchild']=[3,12.5] 
+degree['great granddaughter']=[3,12.5] 
+degree['great grandson']=[3,12.5] 
+degree['great aunt']=[3,12.5]
+degree['great uncle']=[3,12.5]
+degree['great aunt/great uncle']=[3,12.5] 
+degree['great uncle/great aunt']=[3,12.5] 
+degree['great nephew']=[3,12.5] 
+degree['great niece']=[3,12.5] 
+degree['great niece/great nephew']=[3,12.5] 
+degree['cousin']=[3,12.5]
+degree['first cousin']=[3,12.5]
+degree['great great grandparent']=[4,6.25]
+degree['great great grandmother']=[4,6.25] 
+degree['great great grandfather']=[4,6.25] 
+degree['great great grandchild']=[4,6.25] 
+degree['great great grandson']=[4,6.25] 
+degree['great great granddaughter']=[4,6.25] 
+degree['great great great grandparent']=[5,3.125] 
+degree['great great great grandmother']=[5,3.125] 
+degree['great great great grandfather']=[5,3.125] 
+degree['great great great grandchild']=[5,3.125] 
+degree['great great great grandson']=[5,3.125] 
+degree['great great great granddaughter']=[5,3.125] 
+degree['great great great great grandparent']=[6,1.563]
+degree['great great great great grandmother']=[6,1.563]
+degree['great great great great grandfather']=[6,1.563]
+degree['great great great great grandchild']=[6,1.563]
+degree['great great great great grandson']=[6,1.563]
+degree['great great great great granddaughter']=[6,1.563]
+degree['great great great granduncle/great great great grandaunt']=[7,0.781] 
+degree['great great great granduncle']=[7,0.781] 
+degree['great great great grandaunt']=[7,0.781] 
+degree['great great great grandniece/great great great grandnephew']=[7,0.781] 
+degree['great great great grandniece']=[7,0.781] 
+degree['great great great grandniece/great great great grandnephew']=[7,0.781] 
+degree['great great great great great grandparent']=[7,0.781]
+degree['great great great great great grandmother']=[7,0.781]
+degree['great great great great great grandfather']=[7,0.781]
+degree['great great great great great grandchild']=[7,0.781]
+degree['great great great great great grandson']=[7,0.781]
+degree['great great great great great granddaughter']=[7,0.781]
+degree['great great aunt']=[4,6.25]
+degree['great great uncle']=[4,6.25]
+degree['great great aunt/great great uncle']=[4,6.25] 
+degree['great great uncle/great great aunt']=[4,6.25] 
+degree['great great nephew/great great niece']=[4,6.25]
+degree['great great niece']=[4,6.25]
+degree['great great nephew']=[4,6.25]
+degree['great great great nephew/great great great niece']=[5,3.125] 
+degree['great great great nephew']=[5,3.125] 
+degree['great great great niece']=[5,3.125] 
+degree['great great great aunt']=[5,3.125]
+degree['great great great uncle']=[5,3.125]
+degree['great great great aunt/great great great uncle']=[5,3.125] 
+degree['great great great uncle/great great great aunt']=[5,3.125] 
+degree['great great great nephew/great great great niece']=[5,3.125]
+degree['great great great niece']=[5,3.125]
+degree['great great great nephew']=[5,3.125]
+degree['great great great great nephew/great great great great niece']=[6,1.563]
+degree['great great great great niece']=[6,1.563]
+degree['great great great great nephew']=[6,1.563]
+degree['first cousin once removed']=[4,6.25]
+degree['great great great grandparent']=[5,3.125]
+degree['great great great grandmother']=[5,3.125] 
+degree['great great great grandfather']=[5,3.125] 
+degree['great great great grandchild']=[5,3.125] 
+degree['great great great grandson']=[5,3.125] 
+degree['great great great granddaughter']=[5,3.125] 
+degree['great great great aunt']=[5,3.125]
+degree['great great great uncle']=[5,3.125]
+degree['grat great great aunt/great great great uncle']=[5,3.125] 
+degree['great great great niece/great great great nephew']=[5,3.125]
+degree['great great great niece']=[5,3.125]
+degree['great great great nephew']=[5,3.125]
+degree['first cousin twice removed']=[5,3.125]
+degree['first cousin thrice removed']=[6,1.563]
+degree['first cousin four times removed']=[7,0.781]
+degree['second cousin']=[5,3.125] 
+degree['first cousin thrice removed']=[6,1.563]
+degree['second cousin once removed']=[6,1.563]
+degree['second cousin twice removed']=[7,0.781] 
+degree['second cousin thrice removed']=[8,0.391]
+degree['third cousin']=[7,0.781]
+degree['third cousin once removed']=[8,0.391]
+degree['first cousin four times removed']=[8,0.391] 
+degree['third cousin twice removed']=[9,0.195] 
+degree['third cousin thrice removed']=[10,0.0975] 
+degree['fourth cousin']=[10,0.0975] 
+degree['fourth cousin once removed']=[11,0.04875] 
+degree['second cousin thrice removed']=[9,0.195] 
+degree['third cousin thrice removed']=[10,0.0975] 
+degree['fifth cousin']=[12,0.024375]
+degree['unrelated']=['unrelated',0]
+
+#condense equivalent relationships (i.e. "parent" and "child", "grandparent" and "grandchild" into a single relationship for purpose of machine learning and creating the confusion matrix") 
+equivalence=dict() 
+equivalence['father']='parent'
+equivalence['mother']='parent' 
+equivalence['son']='parent'
+equivalence['daughter']='parent'
+equivalence['child']='parent' 
+equivalence['grandfather']='grandparent'
+equivalence['grandmother']='grandparent' 
+equivalence['great grandfather']='great grandparent'
+equivalence['great grandmother']='great grandparent' 
+equivalence['brother']='sibling'
+equivalence['sister']='sibling' 
+equivalence['half brother']='half sibling'
+equivalence['half sister']='half sibling' 
+equivalence['grandson']='grandparent' 
+equivalence['granddaughter']='grandparent' 
+equivalence['aunt']='aunt/uncle' 
+equivalence['uncle']='aunt/uncle' 
+equivalence['niece'] ='aunt/uncle'
+equivalence['nephew']='aunt/uncle' 
+equivalence['half aunt']='half aunt/uncle'
+equivalence['half uncle']='half aunt/uncle' 
+equivalence['half niece']='half aunt/uncle' 
+equivalence['half nephew']='half aunt/uncle' 
+equivalence['great grandson']='great grandparent'
+equivalence['great granddaughter']='great grandparent'
+equivalence['great niece']='great aunt/great uncle'
+equivalence['great nephew']='great aunt/great uncle' 
+equivalence['great uncle']='great aunt/great uncle' 
+equivalence['great aunt']='great aunt/great uncle' 
+equivalence['great niece/great nephew']='great aunt/great uncle' 
+equivalence['great great grandchild']='great great grandparent' 
+equivalence['great great grandson']='great great grandparent' 
+equivalence['great great graddaughter']='great great grandparent' 
+
+
+equivalence['great great grandson']='great great grandparent'
+equivalence['great great granddaughter']='great great grandparent'
+equivalence['great great niece']='great great aunt/great great uncle'
+equivalence['great great nephew']='great great aunt/great great uncle' 
+equivalence['great great uncle']='great great aunt/great great uncle' 
+equivalence['great great aunt']='great great aunt/great great uncle' 
+equivalence['great great niece/great great nephew']='great great aunt/great great uncle' 
+equivalence['great great great great grandchild']='great great great great grandparent' 
+equivalence['great great great great grandson']='great great great great grandparent' 
+equivalence['great great great great graddaughter']='great great great great grandparent' 
+
+
+second_degree=['uncle/aunt','niece/nephew','grandparent','grandchild','half sibling']
