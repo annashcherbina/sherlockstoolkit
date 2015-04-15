@@ -1,5 +1,0 @@
-<h1>New panel_locus</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', panel_loci_path %>

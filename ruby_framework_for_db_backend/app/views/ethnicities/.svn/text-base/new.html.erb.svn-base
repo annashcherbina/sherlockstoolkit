@@ -1,5 +1,0 @@
-<h1>New ethnicity</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', ethnicities_path %>

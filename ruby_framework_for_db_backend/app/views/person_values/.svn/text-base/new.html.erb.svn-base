@@ -1,5 +1,0 @@
-<h1>New person_value</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', person_values_path %>

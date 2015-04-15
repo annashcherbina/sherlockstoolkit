@@ -1,6 +1,0 @@
-<h1>Editing frequency</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @frequency %> |
-<%= link_to 'Back', frequencies_path %>

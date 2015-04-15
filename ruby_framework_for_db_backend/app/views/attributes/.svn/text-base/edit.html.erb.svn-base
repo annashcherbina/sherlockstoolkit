@@ -1,6 +1,0 @@
-<h1>Editing attribute</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @attribute %> |
-<%= link_to 'Back', attributes_path %>

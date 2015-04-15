@@ -1,6 +1,0 @@
-<h1>Editing barcode</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @barcode %> |
-<%= link_to 'Back', barcodes_path %>

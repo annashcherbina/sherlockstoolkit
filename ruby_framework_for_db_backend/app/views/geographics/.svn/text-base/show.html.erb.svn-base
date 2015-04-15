@@ -1,7 +1,0 @@
-<p>
-    <strong>Region name:</strong>
-    <%= @geographic.region_name %>
-</p>
-
-<%= link_to 'Edit', edit_geographic_path(@geographic) %> |
-<%= link_to 'Back', geographics_path %>

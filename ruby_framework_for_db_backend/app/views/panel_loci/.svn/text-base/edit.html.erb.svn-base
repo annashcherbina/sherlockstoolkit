@@ -1,6 +1,0 @@
-<h1>Editing panel_locus</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @panel_locus %> |
-<%= link_to 'Back', panel_loci_path %>

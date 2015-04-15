@@ -1,5 +1,0 @@
-<h1>New snp</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', snps_path %>

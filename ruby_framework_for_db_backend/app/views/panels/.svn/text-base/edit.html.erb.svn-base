@@ -1,6 +1,0 @@
-<h1>Editing panel</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @panel %> |
-<%= link_to 'Back', panels_path %>

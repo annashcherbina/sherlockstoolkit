@@ -1,5 +1,0 @@
-<h1>New loci_group</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', loci_groups_path %>

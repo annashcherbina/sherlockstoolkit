@@ -1,5 +1,0 @@
-<h1>New locus</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', loci_path %>

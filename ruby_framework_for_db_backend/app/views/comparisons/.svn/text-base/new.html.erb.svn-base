@@ -1,5 +1,0 @@
-<h1>New comparison</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', comparisons_path %>

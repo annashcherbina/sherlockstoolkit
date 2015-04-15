@@ -1,6 +1,0 @@
-<h1>Editing person_value</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @person_value %> |
-<%= link_to 'Back', person_values_path %>

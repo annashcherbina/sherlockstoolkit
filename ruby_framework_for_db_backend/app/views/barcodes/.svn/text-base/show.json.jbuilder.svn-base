@@ -1,1 +1,0 @@
-json.extract! @barcode, :id, :experiment_id, :panel_id, :kinship_id, :points_id, :image_id, :barcode_type, :is_mixture, :number_contributors, :is_reference, :percent_contamination, :created_at, :updated_at

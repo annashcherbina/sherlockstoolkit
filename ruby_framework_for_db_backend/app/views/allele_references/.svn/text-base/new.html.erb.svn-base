@@ -1,5 +1,0 @@
-<h1>New allele_reference</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', allele_references_path %>
